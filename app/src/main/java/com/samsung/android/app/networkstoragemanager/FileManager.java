@@ -168,13 +168,19 @@ public class FileManager {
     }
 
     public static ArrayList<Bundle> getSharedFolderRootDir(long serverId) {
-        ArrayList<Bundle> fileList = new ArrayList<>();
-        Bundle bRootFile = new Bundle();
-        bRootFile.putLong("serverId", serverId);
-        bRootFile.putString("filePath", "/");
-        bRootFile.putBoolean("isDirectory", true);
-        fileList.add(bRootFile);
-        return fileList;
+    // For Root (serverId == 1), return actual root directory contents
+    if (serverId == 1) {
+        return getFileList("/", serverId);
+    }
+    
+    // For other servers, create an intermediate folder entry
+    ArrayList<Bundle> fileList = new ArrayList<>();
+    Bundle bRootFile = new Bundle();
+    bRootFile.putLong("serverId", serverId);
+    bRootFile.putString("filePath", "/");
+    bRootFile.putBoolean("isDirectory", true);
+    fileList.add(bRootFile);
+    return fileList;
     }
 
     public static String getSDCardPath() {
