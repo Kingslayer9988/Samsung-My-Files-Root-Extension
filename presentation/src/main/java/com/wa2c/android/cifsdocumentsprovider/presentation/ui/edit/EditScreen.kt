@@ -572,27 +572,26 @@ private fun EditScreenContainer(
 
                     // Passphrase
                     InputText(
-                            title = stringResource(id = R.string.edit_passphrase_title),
-                            hint = stringResource(id = R.string.edit_passphrase_hint),
-                            value = connectionState.value.keyPassphrase,
-                            focusManager = focusManager,
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Password,
-                                imeAction = ImeAction.Next,
-                            ),
-                            autofillType = ContentType.Password,
-                        ) {
-                            connectionState.value = connectionState.value.copy(keyPassphrase = it)
-                        }
+                        title = stringResource(id = R.string.edit_passphrase_title),
+                        hint = stringResource(id = R.string.edit_passphrase_hint),
+                        value = connectionState.value.keyPassphrase,
+                        focusManager = focusManager,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Password,
+                            imeAction = ImeAction.Next,
+                        ),
+                        autofillType = ContentType.Password,
+                    ) {
+                        connectionState.value = connectionState.value.copy(keyPassphrase = it)
+                    }
 
-                        // Ignore known hosts
-                        InputCheck(
-                            title = stringResource(id = R.string.edit_ignore_known_hosts_label),
-                            value = connectionState.value.ignoreKnownHosts,
-                            focusManager = focusManager
-                        ) {
-                            connectionState.value = connectionState.value.copy(ignoreKnownHosts = it)
-                        }
+                    // Ignore known hosts
+                    InputCheck(
+                        title = stringResource(id = R.string.edit_ignore_known_hosts_label),
+                        value = connectionState.value.ignoreKnownHosts,
+                        focusManager = focusManager
+                    ) {
+                        connectionState.value = connectionState.value.copy(ignoreKnownHosts = it)
                     }
 
                     // Folder
