@@ -144,46 +144,7 @@ implementation("androidx.compose.material3:material3:1.1.2")
 #### 1.3 Package Name Updates with Shortened Paths
 Batch rename packages in copied files to use shorter package structure:
 
-```powershell
-# PowerShell command to find and replace package names in copied Kotlin files
-# Update to use much shorter package names to avoid Windows path limits
-
-Get-ChildItem -Path "Samsung-My-Files-Root-Extension\cifs-storage" -Filter "*.kt" -Recurse | ForEach-Object {
-    $content = Get-Content $_.FullName -Raw
-    # Replace long package names with shorter ones
-    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.interfaces', 'package com.samsung.cifs.storage'
-    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.smbj', 'package com.samsung.cifs.storage.smbj'
-    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.jcifsng', 'package com.samsung.cifs.storage.jcifsng'
-    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.presentation', 'package com.samsung.cifs.ui'
-    
-    # Replace import statements
-    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.interfaces', 'import com.samsung.cifs.storage'
-    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.smbj', 'import com.samsung.cifs.storage.smbj'
-    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.jcifsng', 'import com.samsung.cifs.storage.jcifsng'
-    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.presentation', 'import com.samsung.cifs.ui'
-    
-    Set-Content -Path $_.FullName -Value $content -NoNewline
-}
-
-# Also update any remaining files in other directories
-Get-ChildItem -Path "Samsung-My-Files-Root-Extension" -Filter "*.kt" -Recurse | ForEach-Object {
-    $content = Get-Content $_.FullName -Raw
-    $content = $content -replace 'com\.wa2c\.android\.cifsdocumentsprovider', 'com.samsung.cifs'
-    Set-Content -Path $_.FullName -Value $content -NoNewline
-}
-```
-
-#### 1.4 Alternative: Enable Long Path Support (Windows 10 Version 1607+)
-If you prefer to keep original paths, enable Windows long path support:
-
-```powershell
-# Run PowerShell as Administrator and execute:
-New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
-
-# Then restart your computer and Git will support long paths
-# Configure Git to handle long paths:
-git config --global core.longpaths true
-```
+# execute fix_package.ps1 
 
 **Recommendation**: Use the shortened package structure approach as it's more reliable and doesn't require system changes.
 
