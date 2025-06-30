@@ -6,6 +6,7 @@ import com.samsung.cifs.data.EncryptUtils
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -27,7 +28,7 @@ class ConnectionIO @Inject constructor(
     ) {
         withContext(Dispatchers.IO) {
              context.contentResolver.openOutputStream(uriText.toUri())?.use {
-                 val json = formatter.encodeToString(connectionList)
+                 val json = formatter.encodeToString(ListSerializer(ConnectionSettingEntity.serializer()), connectionList)
                  val encryptedJson = EncryptUtils.encrypt(json, password, true)
                  it.write(encryptedJson.toByteArray(Charsets.UTF_8))
              }
@@ -43,7 +44,7 @@ class ConnectionIO @Inject constructor(
             context.contentResolver.openInputStream(uri)?.use {
                 val encryptedJson = it.readBytes().toString(Charsets.UTF_8)
                 val json = EncryptUtils.decrypt(encryptedJson, password, true)
-                formatter.decodeFromString(json)
+                formatter.decodeFromString(ListSerializer(ConnectionSettingEntity.serializer()), json)
             } ?: emptyList()
         }
     }

@@ -10,7 +10,7 @@ import com.samsung.cifs.common.values.UiTheme
 import com.samsung.cifs.data.db.ConnectionIO
 import com.samsung.cifs.data.db.ConnectionSettingDao
 import com.samsung.cifs.data.preference.AppPreferencesDataStore
-import com.samsung.cifs.storage.manager.SshKeyManager
+
 import com.samsung.cifs.domain.IoDispatcher
 import com.samsung.cifs.domain.mapper.DomainMapper.toDataModel
 import com.samsung.cifs.domain.mapper.DomainMapper.toDomainModel
@@ -29,7 +29,6 @@ import javax.inject.Singleton
 @Singleton
 class AppRepository @Inject internal constructor(
     private val appPreferences: AppPreferencesDataStore,
-    private val sshKeyManager: SshKeyManager,
     private val connectionSettingDao: ConnectionSettingDao,
     private val connectionIO: ConnectionIO,
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
@@ -75,27 +74,17 @@ class AppRepository @Inject internal constructor(
     suspend fun setUseForeground(value: Boolean) = appPreferences.setUseForeground(value)
 
     /**
-     * Get known hosts
+     * Get known hosts (CIFS/SMB does not require known hosts, so return empty list)
      */
     suspend fun getKnownHosts(): List<KnownHost> {
-        val hostList = connectionSettingDao.getTypedList(StorageType.entries.filter { it.protocol == ProtocolType.SFTP }
-            .map { it.value })
-            .map { it.toDataModel() }
-        return sshKeyManager.knownHostList.map { entity ->
-            KnownHost(
-                host = entity.host,
-                type = entity.type,
-                key = entity.key,
-                connections = hostList.filter { it.host.equals(entity.host, true) }.map { it.toDomainModel() }
-            )
-        }
+        return emptyList()
     }
 
     /**
-     * Delete known host
+     * Delete known host (CIFS/SMB does not require known hosts, so this is a no-op)
      */
     fun deleteKnownHost(knownHost: KnownHost) {
-        sshKeyManager.deleteKnownHost(knownHost.host, knownHost.type)
+        // No-op for CIFS/SMB
     }
 
     /**

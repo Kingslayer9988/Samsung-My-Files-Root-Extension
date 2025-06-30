@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":data:storage:interfaces"))
+    implementation(project(":cifs-storage"))
 
     implementation(libs.kotlinx.coroutines.android)
 

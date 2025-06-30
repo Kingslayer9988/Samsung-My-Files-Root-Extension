@@ -5,7 +5,7 @@ import android.system.ErrnoException
 import com.hierynomus.smbj.share.File
 import com.samsung.cifs.common.utils.logD
 import com.samsung.cifs.common.values.AccessMode
-import com.samsung.cifs.storage.BackgroundBufferReader
+import com.samsung.cifs.storage.utils.BackgroundBufferReader
 import com.samsung.cifs.storage.utils.checkAccessMode
 import com.samsung.cifs.storage.utils.processFileIo
 import kotlinx.coroutines.CoroutineScope

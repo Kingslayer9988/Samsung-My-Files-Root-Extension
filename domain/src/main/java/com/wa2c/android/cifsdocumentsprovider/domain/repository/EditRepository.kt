@@ -6,7 +6,7 @@ import com.samsung.cifs.common.utils.logD
 import com.samsung.cifs.common.values.USER_GUEST
 import com.samsung.cifs.data.db.ConnectionSettingDao
 import com.samsung.cifs.storage.manager.DocumentFileManager
-import com.samsung.cifs.storage.manager.SshKeyManager
+
 import com.samsung.cifs.storage.manager.StorageClientManager
 import com.samsung.cifs.domain.IoDispatcher
 import com.samsung.cifs.domain.mapper.DomainMapper.toDataModel
@@ -32,7 +32,6 @@ import javax.inject.Singleton
 class EditRepository @Inject internal constructor(
     private val storageClientManager: StorageClientManager,
     private val documentFileManager: DocumentFileManager,
-    private val sshKeyManager: SshKeyManager,
     private val connectionSettingDao: ConnectionSettingDao,
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
 ) {
@@ -154,22 +153,16 @@ class EditRepository @Inject internal constructor(
     suspend fun checkKey(key: String) {
         logD("Check key: key=$key")
         withContext(dispatcher) {
-            try {
-                sshKeyManager.checkKeyFile(key.encodeToByteArray())
-            } catch (e: Exception) {
-                throw EditException.KeyCheck.InvalidException(e)
-            }
+            // CIFS/SMB does not use SSH keys, so this is a no-op
+            logD("SSH key checking not needed for CIFS/SMB")
         }
     }
 
     suspend fun addKnownHost(connection: RemoteConnection) {
         logD("Add known host: connection=$connection")
         withContext(dispatcher) {
-            sshKeyManager.addKnownHost(
-                host = connection.host,
-                port = connection.port?.toIntOrNull(),
-                username = connection.user ?: USER_GUEST,
-            )
+            // CIFS/SMB does not use known hosts, so this is a no-op
+            logD("Known host addition not needed for CIFS/SMB")
         }
     }
 

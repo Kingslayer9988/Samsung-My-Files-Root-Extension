@@ -10,7 +10,7 @@ val androidMinSdk: Int by rootProject.extra
 
 android {
     compileSdk = androidCompileSdk
-    namespace = "${applicationId}.data.storage.apache"
+    namespace = "${applicationId}.cifs.storage"
 
     defaultConfig {
         minSdk = androidMinSdk
@@ -19,27 +19,25 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
     compileOptions {
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
     }
-
-    kotlin {
-        jvmToolchain {
-            languageVersion.set(JavaLanguageVersion.of(javaVersion.majorVersion))
-        }
+    kotlinOptions {
+        jvmTarget = javaVersion.toString()
     }
 }
 
 dependencies {
     implementation(project(":common"))
-    implementation(project(":data:storage:interfaces"))
 
     implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.androidx.documentfile)
-    implementation(libs.apache.commons.net)
-    implementation(libs.apache.commons.vfs)
-    implementation(libs.jsch)
 
     testImplementation(libs.junit)
 }
