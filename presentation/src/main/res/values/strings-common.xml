@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
+    <string name="app_name">CIFS Documents Provider</string>
+
+    <string name="enum_language_en">English</string>
+    <string name="enum_language_ja">日本語</string>
+    <string name="enum_language_ar">العربية</string>
+    <string name="enum_language_sk">Slovenský</string>
+    <string name="enum_language_zh_rcn">简体中文</string>
+    <string name="enum_language_my">မြန်မာစာ</string>
+    <string name="enum_language_ru">Русский</string>
+
+    <string name="enum_storage_smb2_jcifsng">SMB2,3 (jCIFS NG)</string>
+    <string name="enum_storage_smb2_smbj">SMB2,3 (SMBJ)</string>
+    <string name="enum_storage_smb1_jcifsng">SMB1 (jCIFS NG)</string>
+    <string name="enum_storage_ftp_apache">FTP (Apache Commons)</string>
+    <string name="enum_storage_ftps_apache">FTP over SSL/TLS (Apache Commons)</string>
+    <string name="enum_storage_sftp_apache">SSH FTP (Apache Commons)</string>
+
+</resources>
