@@ -229,3 +229,37 @@ Display Name:   [My Home Server              ]
 ---
 
 *This document serves as the complete roadmap for polishing the Samsung My Files Root Extension GUI to match the intended user experience.*
+
+---
+
+Looking at the screenshots, I can see several UI/UX issues that need to be addressed. Let me create a comprehensive polish guide document. 
+
+Made changes.
+
+Perfect! I've created a comprehensive polish_gui.md document that identifies all the major issues visible in your screenshots and provides a detailed roadmap for fixing them.
+
+## 🎯 **Key Issues Identified:**
+
+1. **❌ Wrong Hierarchy**: Everything is flat instead of having proper categories
+2. **❌ FTP/SFTP Still Present**: The removed protocols are still showing in UI
+3. **❌ Wrong Labels**: Root folders incorrectly labeled as "SMB"
+4. **❌ Add Dialog Issues**: Shows FTP/SFTP forms instead of SMB-only options
+5. **❌ No Visual Categories**: Missing collapsible parent folders
+
+## 🚀 **The Most Critical Fixes Needed:**
+
+1. **Remove all FTP/SFTP** from the UI completely
+2. **Create proper category hierarchy** with "Root Explorer" and "Network Storage" as parent folders
+3. **Fix the "Add New Share" dialog** to only show SMB and custom root path options
+4. **Remove incorrect SMB badges** from local root folders
+5. **Implement collapsible categories** for better organization
+
+The document provides:
+- ✅ **Detailed problem analysis** with screenshots reference
+- ✅ **Exact UI mockups** showing how it should look
+- ✅ **Technical implementation guide** for each component
+- ✅ **Priority-ordered task list** from critical to polish
+- ✅ **File-by-file update requirements**
+- ✅ **Testing criteria** to verify fixes
+
+This gives you a complete roadmap to transform the current messy UI into a clean, organized, and professional file manager interface that properly separates root file system access from network storage functionality.
