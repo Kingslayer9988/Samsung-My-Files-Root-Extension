@@ -61,7 +61,7 @@ fun getUriText(type: StorageType, host: String?, port: String?, folder: String?,
 /**
  * Get port
  */
-fun getPort(port: String?, type: StorageType, isFtpsImplicit: Boolean): String? {
+fun getPort(port: String?, type: StorageType): String? {
     return if (!port.isNullOrEmpty()) port else null
 }
 

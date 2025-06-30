@@ -58,7 +58,7 @@ data class RemoteConnection(
 
     /** URI */
     val uri: StorageUri
-        get() = getUriText(storage, host, getPort(port, storage, isFtpsImplicit), folder, true)?.let { StorageUri(it) } ?: StorageUri.ROOT
+        get() = getUriText(storage, host, getPort(port, storage), folder, true)?.let { StorageUri(it) } ?: StorageUri.ROOT
 
     val useKeys: Boolean
         get() = storage.protocol == ProtocolType.SFTP && (!keyFileUri.isNullOrEmpty() || !keyData.isNullOrEmpty())

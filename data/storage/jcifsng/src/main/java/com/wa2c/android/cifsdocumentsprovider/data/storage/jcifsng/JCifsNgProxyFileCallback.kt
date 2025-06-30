@@ -21,8 +21,8 @@ import android.system.ErrnoException
 import com.samsung.cifs.common.utils.logD
 import com.samsung.cifs.common.utils.logE
 import com.samsung.cifs.common.values.AccessMode
-import com.samsung.cifs.storage.utils.BackgroundBufferReader
-import com.samsung.cifs.storage.utils.BackgroundBufferWriter
+import com.samsung.cifs.storage.BackgroundBufferReader
+import com.samsung.cifs.storage.BackgroundBufferWriter
 import com.samsung.cifs.storage.utils.checkAccessMode
 import com.samsung.cifs.storage.utils.processFileIo
 import jcifs.smb.SmbFile
