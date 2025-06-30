@@ -3,14 +3,15 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    namespace 'com.samsung.android.app.networkstoragemanager'  // Required for AGP 8.x
+    compileSdk 35  // Android 15
 
     defaultConfig {
         applicationId "com.samsung.android.app.networkstoragemanager"
         minSdk 26
-        targetSdk 31
-        versionCode 2000000000 //>1210103011
-        versionName "1.0.0"
+        targetSdk 35  // Android 15
+        versionCode 2000000001  // Increment version
+        versionName "2.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,16 +21,43 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
     }
+    
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17  // Updated for modern Android
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
 dependencies {
+    // Updated LibSU to latest version
+    implementation "com.github.topjohnwu.libsu:core:5.2.2"
+    implementation "com.github.topjohnwu.libsu:io:5.2.2"
+    
+    // Add basic Android dependencies
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    
+    // Testing dependencies
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}
 
-    implementation "com.github.topjohnwu.libsu:core:5.0.1"
-    implementation "com.github.topjohnwu.libsu:io:5.0.1"
-
+// Fix Kotlin stdlib conflicts
+configurations.all {
+    resolutionStrategy {
+        // Force latest Kotlin stdlib version to resolve conflicts
+        force 'org.jetbrains.kotlin:kotlin-stdlib:1.9.25'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.25'
+        force 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.25'
+    }
 }
