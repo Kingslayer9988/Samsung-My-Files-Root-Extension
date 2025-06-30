@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.samsung.cifs.storage.manager.StorageClientManager;
+import com.samsung.cifs.common.values.StorageType;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -113,41 +115,78 @@ public class CifsIntegration {
     }
     
     public static ArrayList<Bundle> accessCifsShare(Context context, long serverId, String serverAddr) {
-        // TODO: Implement actual CIFS file access
-        // This will interface with the CIFS libraries (smbj, commons-net, jsch)
         Log.i(TAG, "Accessing CIFS share: " + serverAddr);
         
-        ArrayList<Bundle> fileList = new ArrayList<>();
-        // Return example directory structure for now
-        Bundle folder1 = new Bundle();
-        folder1.putLong("serverId", serverId);
-        folder1.putString("filePath", serverAddr + "/Documents");
-        folder1.putString("fileName", "Documents");
-        folder1.putBoolean("isDirectory", true);
-        folder1.putLong("fileSize", 0);
-        folder1.putLong("lastModified", System.currentTimeMillis());
-        fileList.add(folder1);
-        
-        Bundle folder2 = new Bundle();
-        folder2.putLong("serverId", serverId);
-        folder2.putString("filePath", serverAddr + "/Pictures");
-        folder2.putString("fileName", "Pictures");
-        folder2.putBoolean("isDirectory", true);
-        folder2.putLong("fileSize", 0);
-        folder2.putLong("lastModified", System.currentTimeMillis());
-        fileList.add(folder2);
-        
-        return fileList;
+        try {
+            // Parse the server address to extract connection details
+            CifsShare share = parseServerAddress(serverAddr);
+            if (share == null) {
+                Log.e(TAG, "Failed to parse server address: " + serverAddr);
+                return new ArrayList<>();
+            }
+            
+            // TODO: Implement actual file listing using StorageClientManager
+            // For now, return example directory structure
+            ArrayList<Bundle> fileList = new ArrayList<>();
+            
+            Bundle folder1 = new Bundle();
+            folder1.putLong("serverId", serverId);
+            folder1.putString("filePath", serverAddr + "/Documents");
+            folder1.putString("fileName", "Documents");
+            folder1.putBoolean("isDirectory", true);
+            folder1.putLong("fileSize", 0);
+            folder1.putLong("lastModified", System.currentTimeMillis());
+            fileList.add(folder1);
+            
+            Bundle folder2 = new Bundle();
+            folder2.putLong("serverId", serverId);
+            folder2.putString("filePath", serverAddr + "/Pictures");
+            folder2.putString("fileName", "Pictures");
+            folder2.putBoolean("isDirectory", true);
+            folder2.putLong("fileSize", 0);
+            folder2.putLong("lastModified", System.currentTimeMillis());
+            fileList.add(folder2);
+            
+            return fileList;
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Error accessing CIFS share: " + serverAddr, e);
+            return new ArrayList<>();
+        }
+    }
+    
+    private static CifsShare parseServerAddress(String serverAddr) {
+        try {
+            if (serverAddr.startsWith("smb://")) {
+                String address = serverAddr.substring(6); // Remove "smb://"
+                return new CifsShare("SMB Share", serverAddr, "SMB");
+            }
+            // Add parsing for other protocols as needed
+            return null;
+        } catch (Exception e) {
+            Log.e(TAG, "Error parsing server address: " + serverAddr, e);
+            return null;
+        }
     }
     
     public static void openCifsManager(Context context) {
-        // For now, directly open CIFS Documents Provider
-        // TODO: Create custom CIFS configuration activity later
         Log.i(TAG, "Opening CIFS Documents Provider for configuration");
-        openCifsDocumentsProvider(context);
+        
+        try {
+            // Try to start the CIFS Documents Provider activity directly
+            // Since it's integrated into our app, we can access it via the presentation module
+            Intent intent = new Intent();
+            intent.setClassName(context.getPackageName(), "com.samsung.cifs.presentation.ui.main.MainActivity");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "Error launching CIFS configuration activity", e);
+            // Fallback: try to open the external CIFS Documents Provider if available
+            openExternalCifsDocumentsProvider(context);
+        }
     }
     
-    private static void openCifsDocumentsProvider(Context context) {
+    private static void openExternalCifsDocumentsProvider(Context context) {
         try {
             Intent intent = context.getPackageManager()
                 .getLaunchIntentForPackage("com.wa2c.android.cifsdocumentsprovider");
@@ -155,10 +194,10 @@ public class CifsIntegration {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             } else {
-                Log.w(TAG, "CIFS Documents Provider not installed");
+                Log.w(TAG, "External CIFS Documents Provider not installed");
             }
         } catch (Exception e) {
-            Log.e(TAG, "Error launching CIFS Documents Provider", e);
+            Log.e(TAG, "Error launching external CIFS Documents Provider", e);
         }
     }
 }

@@ -37,12 +37,29 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+    
+    packaging {
+        resources {
+            excludes += ['META-INF/versions/9/OSGI-INF/MANIFEST.MF']
+        }
+    }
 }
 
 dependencies {
     // Updated LibSU to latest version
     implementation "com.github.topjohnwu.libsu:core:5.2.2"
     implementation "com.github.topjohnwu.libsu:io:5.2.2"
+
+    // CIFS Documents Provider modules
+    implementation project(':cifs-storage')
+    implementation project(':common')
+    implementation project(':data:data')
+    implementation project(':data:storage:interfaces')
+    implementation project(':data:storage:manager')
+    implementation project(':data:storage:jcifsng')
+    implementation project(':data:storage:smbj')
+    implementation project(':domain')
+    implementation project(':presentation')
 
     // CIFS/SMB Support
     implementation 'com.hierynomus:smbj:0.11.5'
