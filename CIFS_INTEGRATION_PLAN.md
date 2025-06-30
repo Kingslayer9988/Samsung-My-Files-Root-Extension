@@ -86,30 +86,40 @@ This document outlines the integration plan for bringing CIFS/SMB/FTP/SFTP netwo
 
 ### Phase 1: Repository Setup and Code Copy (Week 1)
 
-#### 1.1 Copy Core Modules
+#### 1.1 Copy Core Modules with Shortened Paths
 Copy entire modules from Cifs-Documents-Provider to Samsung-My-Files-Root-Extension:
+
+**IMPORTANT: Windows Path Length Issue Solution**
+
+The original package structure creates paths that exceed Windows' 260-character limit. We need to restructure during copy:
 
 ```powershell
 # PowerShell commands - use -Force to overwrite existing directories
-# Copy essential modules (preserving directory structure)
+# Step 1: Copy main modules to shorter paths
 Copy-Item -Path "Cifs-Documents-Provider\common" -Destination "Samsung-My-Files-Root-Extension\" -Recurse -Force
 Copy-Item -Path "Cifs-Documents-Provider\data" -Destination "Samsung-My-Files-Root-Extension\" -Recurse -Force
 Copy-Item -Path "Cifs-Documents-Provider\domain" -Destination "Samsung-My-Files-Root-Extension\" -Recurse -Force
 Copy-Item -Path "Cifs-Documents-Provider\presentation" -Destination "Samsung-My-Files-Root-Extension\" -Recurse -Force
 
-# Focus only on SMB-related storage implementations
-Copy-Item -Path "Cifs-Documents-Provider\data\storage\interfaces" -Destination "Samsung-My-Files-Root-Extension\data\storage\" -Recurse -Force
-Copy-Item -Path "Cifs-Documents-Provider\data\storage\smbj" -Destination "Samsung-My-Files-Root-Extension\data\storage\" -Recurse -Force
-Copy-Item -Path "Cifs-Documents-Provider\data\storage\jcifsng" -Destination "Samsung-My-Files-Root-Extension\data\storage\" -Recurse -Force
-Copy-Item -Path "Cifs-Documents-Provider\data\storage\manager" -Destination "Samsung-My-Files-Root-Extension\data\storage\" -Recurse -Force
+# Step 2: Create shorter package structure to avoid path length limits
+# Instead of: com\wa2c\android\cifsdocumentsprovider\data\storage\interfaces
+# Use: com\samsung\cifs\storage (much shorter)
 
-# Alternative shorter syntax (equivalent):
-# cp -r Cifs-Documents-Provider\common Samsung-My-Files-Root-Extension\ -Force
-# cp -r Cifs-Documents-Provider\data Samsung-My-Files-Root-Extension\ -Force
-# cp -r Cifs-Documents-Provider\domain Samsung-My-Files-Root-Extension\ -Force
-# cp -r Cifs-Documents-Provider\presentation Samsung-My-Files-Root-Extension\ -Force
+# Create new shorter directory structure
+New-Item -ItemType Directory -Path "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage" -Force
+New-Item -ItemType Directory -Path "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\ui" -Force
+New-Item -ItemType Directory -Path "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\data" -Force
 
-# Skip FTP/SFTP implementations (apache/, etc.)
+# Copy files to shorter paths
+Copy-Item -Path "Cifs-Documents-Provider\data\storage\interfaces\src\main\java\com\wa2c\android\cifsdocumentsprovider\data\storage\interfaces\*" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage\" -Recurse -Force
+
+Copy-Item -Path "Cifs-Documents-Provider\data\storage\smbj\src\main\java\com\wa2c\android\cifsdocumentsprovider\data\storage\smbj\*" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage\smbj\" -Recurse -Force
+
+Copy-Item -Path "Cifs-Documents-Provider\data\storage\jcifsng\src\main\java\com\wa2c\android\cifsdocumentsprovider\data\storage\jcifsng\*" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage\jcifsng\" -Recurse -Force
+
+Copy-Item -Path "Cifs-Documents-Provider\presentation\src\main\java\com\wa2c\android\cifsdocumentsprovider\presentation\*" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\ui\" -Recurse -Force
+
+# Skip original long-path structure, use only the shortened version
 ```
 
 #### 1.2 Update Build Configuration
@@ -131,23 +141,51 @@ implementation("androidx.compose.ui:ui:1.5.4")
 implementation("androidx.compose.material3:material3:1.1.2")
 ```
 
-#### 1.3 Package Name Updates
-Batch rename packages in copied files:
+#### 1.3 Package Name Updates with Shortened Paths
+Batch rename packages in copied files to use shorter package structure:
 
 ```powershell
 # PowerShell command to find and replace package names in copied Kotlin files
-Get-ChildItem -Path "." -Filter "*.kt" -Recurse | ForEach-Object {
-    (Get-Content $_.FullName) -replace 'com\.wa2c\.android\.cifsdocumentsprovider', 'com.samsung.android.app.networkstoragemanager.cifs' | Set-Content $_.FullName
+# Update to use much shorter package names to avoid Windows path limits
+
+Get-ChildItem -Path "Samsung-My-Files-Root-Extension\cifs-storage" -Filter "*.kt" -Recurse | ForEach-Object {
+    $content = Get-Content $_.FullName -Raw
+    # Replace long package names with shorter ones
+    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.interfaces', 'package com.samsung.cifs.storage'
+    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.smbj', 'package com.samsung.cifs.storage.smbj'
+    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.jcifsng', 'package com.samsung.cifs.storage.jcifsng'
+    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider\.presentation', 'package com.samsung.cifs.ui'
+    
+    # Replace import statements
+    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.interfaces', 'import com.samsung.cifs.storage'
+    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.smbj', 'import com.samsung.cifs.storage.smbj'
+    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.data\.storage\.jcifsng', 'import com.samsung.cifs.storage.jcifsng'
+    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider\.presentation', 'import com.samsung.cifs.ui'
+    
+    Set-Content -Path $_.FullName -Value $content -NoNewline
 }
 
-# Alternative using regex for more precise matching:
-Get-ChildItem -Path "." -Filter "*.kt" -Recurse | ForEach-Object {
+# Also update any remaining files in other directories
+Get-ChildItem -Path "Samsung-My-Files-Root-Extension" -Filter "*.kt" -Recurse | ForEach-Object {
     $content = Get-Content $_.FullName -Raw
-    $content = $content -replace 'package com\.wa2c\.android\.cifsdocumentsprovider', 'package com.samsung.android.app.networkstoragemanager.cifs'
-    $content = $content -replace 'import com\.wa2c\.android\.cifsdocumentsprovider', 'import com.samsung.android.app.networkstoragemanager.cifs'
+    $content = $content -replace 'com\.wa2c\.android\.cifsdocumentsprovider', 'com.samsung.cifs'
     Set-Content -Path $_.FullName -Value $content -NoNewline
 }
 ```
+
+#### 1.4 Alternative: Enable Long Path Support (Windows 10 Version 1607+)
+If you prefer to keep original paths, enable Windows long path support:
+
+```powershell
+# Run PowerShell as Administrator and execute:
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+
+# Then restart your computer and Git will support long paths
+# Configure Git to handle long paths:
+git config --global core.longpaths true
+```
+
+**Recommendation**: Use the shortened package structure approach as it's more reliable and doesn't require system changes.
 
 ### Phase 2: Enable SMB as Local Storage (Week 1-2)
 
@@ -635,3 +673,50 @@ This revised integration plan focuses on **maximum code reuse** with **minimal c
 - Test with real SMB servers to ensure copied code works correctly
 
 This approach delivers the requested SMB integration while requiring minimal programming skills - essentially a sophisticated copy-and-rename operation with proven, production-ready code.
+
+## Troubleshooting
+
+### Windows Path Length Issues
+
+**Problem**: `error: open("data/storage/interfaces/src/main/java/com/wa2c/android/cifsdocumentsprovider/data/storage/interfaces/utils/BackgroundBufferReader.kt"): Filename too long`
+
+**Root Cause**: Windows has a 260-character path length limit, and the original CIFS provider package structure creates paths that exceed this limit.
+
+**Solutions**:
+
+#### Solution 1: Use Shortened Package Structure (Recommended)
+Follow the updated copy commands in Phase 1.1 that use shorter paths:
+- Instead of: `com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces`
+- Use: `com.samsung.cifs.storage`
+
+#### Solution 2: Enable Windows Long Path Support
+```powershell
+# Run as Administrator
+New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
+
+# Configure Git for long paths
+git config --global core.longpaths true
+
+# Restart computer
+```
+
+#### Solution 3: Manual File-by-File Copy
+If automated copying fails, copy files individually with shorter names:
+
+```powershell
+# Example: Copy and rename problematic files
+Copy-Item -Path "Cifs-Documents-Provider\data\storage\interfaces\src\main\java\com\wa2c\android\cifsdocumentsprovider\data\storage\interfaces\utils\BackgroundBufferReader.kt" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage\BgBufferReader.kt"
+
+Copy-Item -Path "Cifs-Documents-Provider\data\storage\interfaces\src\main\java\com\wa2c\android\cifsdocumentsprovider\data\storage\interfaces\utils\BackgroundBufferWriter.kt" -Destination "Samsung-My-Files-Root-Extension\cifs-storage\src\main\java\com\samsung\cifs\storage\BgBufferWriter.kt"
+```
+
+#### Solution 4: Use Git Worktree in Shorter Path
+```powershell
+# Move to shorter root path
+cd C:\temp\
+git clone your-repo short-repo
+cd short-repo
+# Continue with integration
+```
+
+**Recommended Approach**: Use Solution 1 (shortened package structure) as it provides the cleanest long-term solution without requiring system modifications.
