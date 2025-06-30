@@ -570,59 +570,8 @@ private fun EditScreenContainer(
                         connectionState.value = connectionState.value.copy(anonymous = it)
                     }
 
-                    // Key
-                    if (protocol == ProtocolType.SFTP) {
-                        var expanded by remember { mutableStateOf(false) }
-                        InputText(
-                            title = stringResource(id = R.string.edit_key_title),
-                            hint = stringResource(id = R.string.edit_key_hint),
-                            value = if (!connectionState.value.keyData.isNullOrEmpty()) {
-                                // import
-                                stringResource(id = R.string.edit_key_text_import)
-                            } else if (!connectionState.value.keyFileUri.isNullOrEmpty()) {
-                                // file
-                                val name = connectionState.value.keyFileUri?.fileName ?: ""
-                                stringResource(id = R.string.edit_key_text_file) +
-                                        if (name.isNotEmpty()) " ($name)" else ""
-                            } else {
-                                // none
-                                stringResource(id = R.string.edit_key_text_none)
-                            },
-                            focusManager = focusManager,
-                            readonly = true,
-                            iconResource = R.drawable.ic_key,
-                            keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Uri,
-                                imeAction = ImeAction.Next,
-                            ),
-                            onClickButton = {
-                                expanded = true
-                            }
-                        ) { }
-
-                        Box(
-                            modifier = Modifier
-                                .align(Alignment.End),
-                        ) {
-                            DropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false },
-                            ) {
-                                KeyInputType.entries.forEach {
-                                    DropdownMenuItem(
-                                        text = { Text(text = stringResource(id = it.labelRes)) },
-                                        onClick = {
-                                            onClickImportKey(it)
-                                            expanded = false
-                                        },
-
-                                    )
-                                }
-                            }
-                        }
-
-                        // Passphrase
-                        InputText(
+                    // Passphrase
+                    InputText(
                             title = stringResource(id = R.string.edit_passphrase_title),
                             hint = stringResource(id = R.string.edit_passphrase_hint),
                             value = connectionState.value.keyPassphrase,
@@ -643,42 +592,6 @@ private fun EditScreenContainer(
                             focusManager = focusManager
                         ) {
                             connectionState.value = connectionState.value.copy(ignoreKnownHosts = it)
-                        }
-                    }
-
-
-                    // Encoding
-                    if (protocol == ProtocolType.FTP || protocol == ProtocolType.FTPS || protocol == ProtocolType.SFTP) {
-                        InputOption(
-                            title = stringResource(id = R.string.edit_encoding_title),
-                            items = Charset.availableCharsets()
-                                .map { OptionItem(it.key, it.value.name()) },
-                            value = connectionState.value.encoding,
-                            focusManager = focusManager,
-                        ) {
-                            connectionState.value = connectionState.value.copy(encoding = it)
-                        }
-                    }
-
-                    // FTP Mode
-                    if (protocol == ProtocolType.FTP || protocol == ProtocolType.FTPS) {
-                        InputCheck(
-                            title = stringResource(id = R.string.edit_ftp_mode_title),
-                            value = connectionState.value.isFtpActiveMode,
-                            focusManager = focusManager,
-                        ) {
-                            connectionState.value = connectionState.value.copy(isFtpActiveMode = it)
-                        }
-                    }
-
-                    // Implicit SSL/TLS Mode
-                    if (protocol == ProtocolType.FTPS) {
-                        InputCheck(
-                            title = stringResource(id = R.string.edit_ftps_implicit_label),
-                            value = connectionState.value.isFtpsImplicit,
-                            focusManager = focusManager,
-                        ) {
-                            connectionState.value = connectionState.value.copy(isFtpsImplicit = it)
                         }
                     }
 
