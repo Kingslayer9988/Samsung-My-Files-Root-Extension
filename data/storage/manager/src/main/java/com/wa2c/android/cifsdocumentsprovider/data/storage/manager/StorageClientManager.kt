@@ -4,8 +4,6 @@ import android.os.ParcelFileDescriptor
 import com.samsung.cifs.common.values.AccessMode
 import com.samsung.cifs.common.values.StorageType
 import com.samsung.cifs.common.values.ThumbnailType
-import com.samsung.cifs.data.storage.apache.ApacheFtpClient
-import com.samsung.cifs.data.storage.apache.ApacheSftpClient
 import com.samsung.cifs.storage.StorageClient
 import com.samsung.cifs.storage.StorageFile
 import com.samsung.cifs.storage.StorageRequest
@@ -21,7 +19,6 @@ import javax.inject.Singleton
 class StorageClientManager @Inject constructor(
     private val documentFileManager: DocumentFileManager,
     private val fileDescriptorManager: FileDescriptorManager,
-    private val sshKeyManager: SshKeyManager,
 ) {
 
     /** jCIFS NG (SMB2,3) client */
@@ -39,32 +36,11 @@ class StorageClientManager @Inject constructor(
         JCifsNgClient(isSmb1 = true)
     }
 
-    /** Apache FTP client */
-    private val apacheFtpClient = lazy {
-        ApacheFtpClient(isFtps = false)
-    }
-
-    /** Apache FTPS client */
-    private val apacheFtpsClient = lazy {
-        ApacheFtpClient(isFtps = true)
-    }
-
-    /** Apache SFTP client */
-    private val apacheSftpClient = lazy {
-        ApacheSftpClient(
-            knownHostPath = sshKeyManager.knownHostPath,
-            onKeyRead = documentFileManager::loadFile
-        )
-    }
-
     /** Client map */
     private val clientMap = mapOf(
         StorageType.JCIFS to jCifsNgClient,
         StorageType.SMBJ to smbjClient,
         StorageType.JCIFS_LEGACY to jCifsNgLegacyClient,
-        StorageType.APACHE_FTP to apacheFtpClient,
-        StorageType.APACHE_FTPS to apacheFtpsClient,
-        StorageType.APACHE_SFTP to apacheSftpClient,
     )
 
     /**

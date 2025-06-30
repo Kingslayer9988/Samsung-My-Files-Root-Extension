@@ -13,12 +13,6 @@ enum class StorageType(
     SMBJ("SMBJ", ProtocolType.SMB),
     /** JCIFS */
     JCIFS_LEGACY("JCIFS_LEGACY", ProtocolType.SMB),
-    /** Apache FTP */
-    APACHE_FTP("APACHE_FTP", ProtocolType.FTP),
-    /** Apache FTPS */
-    APACHE_FTPS("APACHE_FTPS", ProtocolType.FTPS),
-    /** Apache SFTP */
-    APACHE_SFTP("APACHE_SFTP", ProtocolType.SFTP),
     ;
 
     companion object {

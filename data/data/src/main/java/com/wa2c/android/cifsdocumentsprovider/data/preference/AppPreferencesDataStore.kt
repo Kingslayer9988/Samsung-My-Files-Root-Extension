@@ -55,7 +55,7 @@ class AppPreferencesDataStore @Inject constructor(
     suspend fun setOpenFileLimit(value: Int) = dataStore.setValue(PREFKEY_OPEN_FILE_LIMIT, value)
 
     /** Use as local */
-    val useAsLocalFlow: Flow<Boolean> = dataStore.data.map { it[PREFKEY_USE_AS_LOCAL] ?: false  }
+    val useAsLocalFlow: Flow<Boolean> = dataStore.data.map { it[PREFKEY_USE_AS_LOCAL] ?: true  }
 
     /** Use as local */
     suspend fun setUseAsLocal(value: Boolean) = dataStore.setValue(PREFKEY_USE_AS_LOCAL, value)
