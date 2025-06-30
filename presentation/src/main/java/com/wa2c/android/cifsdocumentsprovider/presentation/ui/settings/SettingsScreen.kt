@@ -46,7 +46,7 @@ import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_DEFAULT
 import com.samsung.cifs.common.values.UiTheme
 import com.samsung.cifs.domain.model.KnownHost
 import com.samsung.cifs.domain.model.RemoteConnection
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.Language
 import com.samsung.cifs.ui.ext.collectIn
 import com.samsung.cifs.ui.ext.mode

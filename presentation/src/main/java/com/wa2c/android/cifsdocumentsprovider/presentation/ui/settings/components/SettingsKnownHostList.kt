@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.samsung.cifs.domain.model.KnownHost
 import com.samsung.cifs.domain.model.RemoteConnection
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ui.common.CommonDialog
 import com.samsung.cifs.ui.ui.common.DialogButton
 import com.samsung.cifs.ui.ui.common.DividerThin

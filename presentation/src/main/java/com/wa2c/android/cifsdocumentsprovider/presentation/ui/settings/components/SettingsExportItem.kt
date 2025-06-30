@@ -42,7 +42,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.samsung.cifs.common.values.PASSWORD_LENGTH_32
 import com.samsung.cifs.domain.model.RemoteConnectionIndex
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ui.common.CommonDialog
 import com.samsung.cifs.ui.ui.common.DialogButton
 import com.samsung.cifs.ui.ui.common.DividerNormal

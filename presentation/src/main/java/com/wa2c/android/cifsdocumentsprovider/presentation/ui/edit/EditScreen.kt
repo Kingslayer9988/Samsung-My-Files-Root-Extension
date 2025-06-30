@@ -72,7 +72,7 @@ import com.samsung.cifs.domain.model.ConnectionResult
 import com.samsung.cifs.domain.model.DocumentId
 import com.samsung.cifs.domain.model.RemoteConnection
 import com.samsung.cifs.domain.model.StorageUri
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.KeyInputType
 import com.samsung.cifs.ui.ext.collectIn
 import com.samsung.cifs.ui.ext.labelRes

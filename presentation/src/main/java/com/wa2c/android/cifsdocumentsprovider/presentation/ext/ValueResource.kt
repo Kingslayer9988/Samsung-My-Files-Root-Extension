@@ -11,7 +11,7 @@ import com.samsung.cifs.domain.model.SendDataState
 import com.samsung.cifs.common.values.StorageType
 import com.samsung.cifs.common.values.ThumbnailType
 import com.samsung.cifs.common.values.UiTheme
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ui.common.PopupMessageType
 
 val Throwable?.labelRes: Int
@@ -104,10 +104,7 @@ val StorageType.labelRes: Int
     get() = when (this) {
         StorageType.JCIFS -> R.string.enum_storage_smb2_jcifsng
         StorageType.SMBJ -> R.string.enum_storage_smb2_smbj
-        StorageType.JCIFS_LEGACY ->R.string.enum_storage_smb1_jcifsng
-        StorageType.APACHE_FTP -> R.string.enum_storage_ftp_apache
-        StorageType.APACHE_FTPS -> R.string.enum_storage_ftps_apache
-        StorageType.APACHE_SFTP -> R.string.enum_storage_sftp_apache
+        StorageType.JCIFS_LEGACY -> R.string.enum_storage_smb1_jcifsng
     }
 
 val KeyInputType.labelRes: Int

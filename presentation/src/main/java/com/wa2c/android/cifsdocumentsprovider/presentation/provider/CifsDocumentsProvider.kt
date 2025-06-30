@@ -30,7 +30,7 @@ import com.samsung.cifs.common.values.URI_SEPARATOR
 import com.samsung.cifs.domain.model.DocumentId
 import com.samsung.cifs.domain.model.RemoteFile
 import com.samsung.cifs.domain.repository.StorageRepository
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.collectIn
 import com.samsung.cifs.ui.ext.createAuthenticatePendingIntent
 import com.samsung.cifs.ui.provideStorageRepository

@@ -12,7 +12,7 @@ import androidx.work.ForegroundInfo
 import com.samsung.cifs.common.utils.getFileName
 import com.samsung.cifs.common.values.NOTIFICATION_CHANNEL_ID_PROVIDER
 import com.samsung.cifs.common.values.NOTIFICATION_ID_PROVIDER
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 
 /**
  * Provider Notification

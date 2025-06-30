@@ -39,7 +39,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.samsung.cifs.domain.model.DocumentId
 import com.samsung.cifs.domain.model.RemoteFile
 import com.samsung.cifs.domain.model.StorageUri
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.collectIn
 import com.samsung.cifs.ui.ui.common.AppSnackbarHost
 import com.samsung.cifs.ui.ui.common.BottomButton

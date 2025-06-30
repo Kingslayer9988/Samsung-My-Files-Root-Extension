@@ -61,7 +61,7 @@ data class RemoteConnection(
         get() = getUriText(storage, host, getPort(port, storage), folder, true)?.let { StorageUri(it) } ?: StorageUri.ROOT
 
     val useKeys: Boolean
-        get() = storage.protocol == ProtocolType.SFTP && (!keyFileUri.isNullOrEmpty() || !keyData.isNullOrEmpty())
+        get() = false  // SMB/CIFS doesn't use SSH keys
 
     /**
      * True if connection changed.

@@ -14,7 +14,7 @@ import androidx.work.ForegroundInfo
 import com.samsung.cifs.common.values.NOTIFICATION_CHANNEL_ID_SEND
 import com.samsung.cifs.domain.model.SendDataState
 import com.samsung.cifs.domain.model.SendData
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.getSummaryText
 import com.samsung.cifs.ui.ui.MainActivity
 

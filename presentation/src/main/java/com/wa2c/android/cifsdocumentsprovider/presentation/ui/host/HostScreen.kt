@@ -36,7 +36,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.samsung.cifs.common.values.HostSortType
 import com.samsung.cifs.domain.model.HostData
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.collectIn
 import com.samsung.cifs.ui.ext.labelRes
 import com.samsung.cifs.ui.ui.common.AppSnackbarHost

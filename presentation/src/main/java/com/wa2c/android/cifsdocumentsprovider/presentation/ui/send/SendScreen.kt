@@ -41,7 +41,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.samsung.cifs.domain.model.SendData
 import com.samsung.cifs.domain.model.SendDataState
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.getSummaryText
 import com.samsung.cifs.ui.ui.common.AppSnackbarHost
 import com.samsung.cifs.ui.ui.common.CommonDialog

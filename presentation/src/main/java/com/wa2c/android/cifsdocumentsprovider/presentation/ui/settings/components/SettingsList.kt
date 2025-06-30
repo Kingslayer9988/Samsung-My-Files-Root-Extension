@@ -18,7 +18,7 @@ import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_DEFAULT
 import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_MAX
 import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_MIN
 import com.samsung.cifs.common.values.UiTheme
-import com.samsung.cifs.ui.R
+import com.samsung.android.app.networkstoragemanager.presentation.R
 import com.samsung.cifs.ui.ext.getLabel
 import com.samsung.cifs.ui.ui.common.OptionItem
 import com.samsung.cifs.ui.ui.common.Theme
