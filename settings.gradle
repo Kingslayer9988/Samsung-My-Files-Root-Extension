@@ -15,3 +15,12 @@ dependencyResolutionManagement {
 }
 rootProject.name = "My Files Root Extension"
 include ':app'
+include ':common'
+include ':data:data'
+include ':data:storage:interfaces'
+include ':data:storage:manager'
+include ':data:storage:jcifsng'
+include ':data:storage:smbj'
+include ':domain'
+include ':presentation'
+include ':cifs-storage'

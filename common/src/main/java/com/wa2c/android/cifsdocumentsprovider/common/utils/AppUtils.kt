@@ -7,7 +7,7 @@ import android.provider.OpenableColumns
 import android.system.ErrnoException
 import android.webkit.MimeTypeMap
 import com.samsung.cifs.common.exception.StorageException
-import com.samsung.cifs.common.values.DEFAULT_FTPS_IMPLICIT_PORT
+
 import com.samsung.cifs.common.values.ProtocolType
 import com.samsung.cifs.common.values.StorageType
 import com.samsung.cifs.common.values.URI_SEPARATOR
@@ -62,9 +62,7 @@ fun getUriText(type: StorageType, host: String?, port: String?, folder: String?,
  * Get port
  */
 fun getPort(port: String?, type: StorageType, isFtpsImplicit: Boolean): String? {
-    if (!port.isNullOrEmpty()) return port
-    return if (type.protocol == ProtocolType.FTPS && isFtpsImplicit) return "$DEFAULT_FTPS_IMPLICIT_PORT"
-    else null
+    return if (!port.isNullOrEmpty()) port else null
 }
 
 

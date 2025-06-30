@@ -40,7 +40,6 @@ dependencies {
     implementation(project(":data:storage:interfaces"))
     implementation(project(":data:storage:jcifsng"))
     implementation(project(":data:storage:smbj"))
-    implementation(project(":data:storage:apache"))
 
     // Libraries
     implementation(libs.hilt.android)
