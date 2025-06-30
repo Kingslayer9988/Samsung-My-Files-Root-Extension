@@ -64,9 +64,12 @@ class FileDescriptorManager @Inject internal constructor(
             try {
                 ParcelFileDescriptor.AutoCloseOutputStream(pipe[1]).use { output ->
                     getFileDescriptor().use { fd ->
-                        MediaMetadataRetriever().use { mmr ->
+                        val mmr = MediaMetadataRetriever()
+                        try {
                             mmr.setDataSource(fd.fileDescriptor)
                             mmr.embeddedPicture
+                        } finally {
+                            mmr.release()
                         }?.let { imageBytes ->
                             imageBytes.inputStream().use { input ->
                                 val buffer = ByteArray(BUFFER_SIZE)
