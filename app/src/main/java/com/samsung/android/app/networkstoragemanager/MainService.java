@@ -142,8 +142,14 @@ public class MainService extends Service implements RequestCode {
                 break;
             case GET_SHARED_FOLDER:
                 //8 (aka root folder)
-                //result.putParcelableArrayList("sharedFolderList", FileManager.getFileList("/", extras.getLong("serverId")));
-                result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(extras.getLong("serverId")));
+                if (extras.getString("serverAddr") != null && 
+                    (extras.getString("serverAddr").startsWith("cifs://") || 
+                     extras.getString("serverAddr").startsWith("smb://") || 
+                     extras.getString("serverAddr").startsWith("ftp://"))) {
+                    result.putParcelableArrayList("sharedFolderList", handleCifsRequest(extras.getLong("serverId"), extras.getString("serverAddr")));
+                } else {
+                    result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(extras.getLong("serverId")));
+                }
                 result.putBoolean("result", true);
                 break;
             case GET_FILE_LIST:
@@ -284,4 +290,25 @@ public class MainService extends Service implements RequestCode {
         }
     }
 
+    // This method handles CIFS requests and integrates with the CifsIntegration class.
+    private ArrayList<Bundle> handleCifsRequest(long serverId, String serverAddr) {
+        if (serverAddr.startsWith("cifs://")) {
+            if (serverAddr.equals("cifs://add_new")) {
+                // Open CIFS configuration
+                CifsIntegration.openCifsManager(this);
+                return new ArrayList<>();
+            } else {
+                // Handle CIFS share access
+                return CifsIntegration.accessCifsShare(this, serverId, serverAddr);
+            }
+        } else if (serverAddr.startsWith("smb://") || serverAddr.startsWith("ftp://") || serverAddr.startsWith("sftp://")) {
+            // Handle other network protocols - you'll need to implement this
+            // For now, return empty list or delegate to appropriate handler
+            return new ArrayList<>();
+        } else {
+            // Fallback to default file manager behavior
+            return FileManager.getSharedFolderRootDir(serverId);
+        }
+    }
 }
+    

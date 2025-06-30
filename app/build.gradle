@@ -23,7 +23,8 @@ android {
         }
         debug {
             debuggable true
-            applicationIdSuffix ".debug"
+            // Removed applicationIdSuffix ".debug" to maintain Samsung My Files compatibility
+            // Debug and release versions will have the same package name
         }
     }
     
@@ -42,6 +43,14 @@ dependencies {
     // Updated LibSU to latest version
     implementation "com.github.topjohnwu.libsu:core:5.2.2"
     implementation "com.github.topjohnwu.libsu:io:5.2.2"
+
+    // CIFS/SMB Support
+    implementation 'com.hierynomus:smbj:0.11.5'
+    implementation 'commons-net:commons-net:3.9.0'  // For FTP
+    implementation 'com.jcraft:jsch:0.1.55'         // For SFTP
+
+    // JSON handling for CIFS configurations
+    implementation 'com.google.code.gson:gson:2.10.1'
     
     // Add basic Android dependencies
     implementation 'androidx.appcompat:appcompat:1.7.0'
