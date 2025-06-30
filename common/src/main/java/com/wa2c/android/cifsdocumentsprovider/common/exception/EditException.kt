@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.common.exception
+package com.samsung.cifs.common.exception
 
 sealed class EditException(e: Exception?): RuntimeException(e) {
     sealed class SaveCheck(e: Exception?) : EditException(e) {

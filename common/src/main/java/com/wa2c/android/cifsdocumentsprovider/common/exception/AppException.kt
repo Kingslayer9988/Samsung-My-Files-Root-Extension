@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.common.exception
+package com.samsung.cifs.common.exception
 
 sealed class AppException(e: Exception?): RuntimeException(e) {
     sealed class Settings(e: Exception?) : AppException(e) {

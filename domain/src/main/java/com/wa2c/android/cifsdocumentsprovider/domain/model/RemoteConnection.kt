@@ -1,12 +1,12 @@
-package com.wa2c.android.cifsdocumentsprovider.domain.model
+package com.samsung.cifs.domain.model
 
 import android.os.Parcelable
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getPort
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getUriText
-import com.wa2c.android.cifsdocumentsprovider.common.values.DEFAULT_ENCODING
-import com.wa2c.android.cifsdocumentsprovider.common.values.ProtocolType
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.common.values.ThumbnailType
+import com.samsung.cifs.common.utils.getPort
+import com.samsung.cifs.common.utils.getUriText
+import com.samsung.cifs.common.values.DEFAULT_ENCODING
+import com.samsung.cifs.common.values.ProtocolType
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.common.values.ThumbnailType
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable

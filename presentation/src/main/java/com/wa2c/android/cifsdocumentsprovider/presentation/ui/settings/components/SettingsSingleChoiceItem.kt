@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components
+package com.samsung.cifs.ui.ui.settings.components
 
 import android.content.res.Configuration
 import androidx.compose.runtime.Composable
@@ -7,11 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.OptionItem
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.SingleChoiceDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.OptionItem
+import com.samsung.cifs.ui.ui.common.SingleChoiceDialog
+import com.samsung.cifs.ui.ui.common.Theme
 
 /**
  * Settings single choice item

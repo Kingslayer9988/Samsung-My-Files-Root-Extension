@@ -1,11 +1,11 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import android.os.Parcelable
 import androidx.annotation.StringRes
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarVisuals
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.labelRes
+import com.samsung.cifs.ui.ext.labelRes
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.parcelize.Parcelize

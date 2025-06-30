@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -17,7 +17,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
+import com.samsung.cifs.ui.R
 
 @Composable
 fun AppSnackbarHost(snackbarHostState: SnackbarHostState) = SnackbarHost(snackbarHostState) { data ->

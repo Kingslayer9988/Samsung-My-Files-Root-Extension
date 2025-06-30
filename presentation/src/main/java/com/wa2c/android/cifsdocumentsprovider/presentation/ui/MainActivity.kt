@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui
+package com.samsung.cifs.ui.ui
 
 import android.Manifest
 import android.content.Intent
@@ -19,14 +19,14 @@ import androidx.navigation.compose.rememberNavController
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.wa2c.android.cifsdocumentsprovider.common.utils.mimeType
-import com.wa2c.android.cifsdocumentsprovider.domain.model.getCurrentReady
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.getStorageId
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.mode
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.isDark
-import com.wa2c.android.cifsdocumentsprovider.presentation.worker.SendWorker
+import com.samsung.cifs.common.utils.mimeType
+import com.samsung.cifs.domain.model.getCurrentReady
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ext.getStorageId
+import com.samsung.cifs.ui.ext.mode
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.isDark
+import com.samsung.cifs.ui.worker.SendWorker
 import dagger.hilt.android.AndroidEntryPoint
 
 /**

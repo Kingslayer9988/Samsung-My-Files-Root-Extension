@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.data.preference
+package com.samsung.cifs.data.preference
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -10,9 +10,9 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStoreFile
-import com.wa2c.android.cifsdocumentsprovider.common.values.HostSortType
-import com.wa2c.android.cifsdocumentsprovider.common.values.OPEN_FILE_LIMIT_DEFAULT
-import com.wa2c.android.cifsdocumentsprovider.common.values.UiTheme
+import com.samsung.cifs.common.values.HostSortType
+import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_DEFAULT
+import com.samsung.cifs.common.values.UiTheme
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

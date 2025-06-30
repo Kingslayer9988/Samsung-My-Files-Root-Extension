@@ -1,14 +1,14 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.apache
+package com.samsung.cifs.data.storage.apache
 
 import android.os.ProxyFileDescriptorCallback
 import android.system.ErrnoException
-import com.wa2c.android.cifsdocumentsprovider.common.exception.StorageException
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logE
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.common.values.BUFFER_SIZE
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.checkAccessMode
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.processFileIo
+import com.samsung.cifs.common.exception.StorageException
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.common.utils.logE
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.common.values.BUFFER_SIZE
+import com.samsung.cifs.storage.utils.checkAccessMode
+import com.samsung.cifs.storage.utils.processFileIo
 import kotlinx.coroutines.*
 import org.apache.commons.vfs2.FileObject
 import org.apache.commons.vfs2.RandomAccessContent

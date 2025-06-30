@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ext
+package com.samsung.cifs.ui.ext
 
 import java.util.Locale
 

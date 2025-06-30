@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.common.utils
+package com.samsung.cifs.common.utils
 
 import android.content.ContentResolver
 import android.content.Context
@@ -6,12 +6,12 @@ import android.net.Uri
 import android.provider.OpenableColumns
 import android.system.ErrnoException
 import android.webkit.MimeTypeMap
-import com.wa2c.android.cifsdocumentsprovider.common.exception.StorageException
-import com.wa2c.android.cifsdocumentsprovider.common.values.DEFAULT_FTPS_IMPLICIT_PORT
-import com.wa2c.android.cifsdocumentsprovider.common.values.ProtocolType
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_SEPARATOR
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_START
+import com.samsung.cifs.common.exception.StorageException
+import com.samsung.cifs.common.values.DEFAULT_FTPS_IMPLICIT_PORT
+import com.samsung.cifs.common.values.ProtocolType
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.common.values.URI_SEPARATOR
+import com.samsung.cifs.common.values.URI_START
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException

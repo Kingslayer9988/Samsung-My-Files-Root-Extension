@@ -1,11 +1,11 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.folder
+package com.samsung.cifs.ui.ui.folder
 
 import androidx.lifecycle.ViewModel
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteConnection
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteFile
-import com.wa2c.android.cifsdocumentsprovider.domain.model.StorageUri
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.EditRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.MainCoroutineScope
+import com.samsung.cifs.domain.model.RemoteConnection
+import com.samsung.cifs.domain.model.RemoteFile
+import com.samsung.cifs.domain.model.StorageUri
+import com.samsung.cifs.domain.repository.EditRepository
+import com.samsung.cifs.ui.ext.MainCoroutineScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow

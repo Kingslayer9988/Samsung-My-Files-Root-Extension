@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation
+package com.samsung.cifs.ui
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

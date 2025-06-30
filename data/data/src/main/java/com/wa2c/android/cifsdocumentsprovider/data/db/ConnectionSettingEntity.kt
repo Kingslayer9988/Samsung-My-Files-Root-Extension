@@ -1,10 +1,10 @@
-package com.wa2c.android.cifsdocumentsprovider.data.db
+package com.samsung.cifs.data.db
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
+import com.samsung.cifs.common.values.StorageType
 import kotlinx.serialization.Serializable
 
 @Serializable

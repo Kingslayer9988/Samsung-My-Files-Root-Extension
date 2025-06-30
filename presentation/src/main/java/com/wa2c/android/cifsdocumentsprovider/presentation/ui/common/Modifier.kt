@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import android.view.KeyEvent
 import androidx.compose.ui.Modifier

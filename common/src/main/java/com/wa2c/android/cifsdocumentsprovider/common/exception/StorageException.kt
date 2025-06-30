@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.common.exception
+package com.samsung.cifs.common.exception
 
 import java.io.IOException
 

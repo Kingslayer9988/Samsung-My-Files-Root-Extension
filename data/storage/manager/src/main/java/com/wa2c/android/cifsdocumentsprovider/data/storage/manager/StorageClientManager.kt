@@ -1,16 +1,16 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.manager
+package com.samsung.cifs.storage.manager
 
 import android.os.ParcelFileDescriptor
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.common.values.ThumbnailType
-import com.wa2c.android.cifsdocumentsprovider.data.storage.apache.ApacheFtpClient
-import com.wa2c.android.cifsdocumentsprovider.data.storage.apache.ApacheSftpClient
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageClient
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageFile
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageRequest
-import com.wa2c.android.cifsdocumentsprovider.data.storage.jcifsng.JCifsNgClient
-import com.wa2c.android.cifsdocumentsprovider.data.storage.smbj.SmbjClient
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.common.values.ThumbnailType
+import com.samsung.cifs.data.storage.apache.ApacheFtpClient
+import com.samsung.cifs.data.storage.apache.ApacheSftpClient
+import com.samsung.cifs.storage.StorageClient
+import com.samsung.cifs.storage.StorageFile
+import com.samsung.cifs.storage.StorageRequest
+import com.samsung.cifs.storage.jcifsng.JCifsNgClient
+import com.samsung.cifs.storage.smbj.SmbjClient
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,12 +1,12 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.smbj
+package com.samsung.cifs.storage.smbj
 
 import android.os.ProxyFileDescriptorCallback
 import android.system.ErrnoException
 import com.hierynomus.smbj.share.File
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.checkAccessMode
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.processFileIo
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.storage.utils.checkAccessMode
+import com.samsung.cifs.storage.utils.processFileIo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

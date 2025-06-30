@@ -1,14 +1,14 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.manager
+package com.samsung.cifs.storage.manager
 
 import android.content.Context
 import android.net.Uri
 import android.provider.DocumentsContract
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getFileName
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logE
-import com.wa2c.android.cifsdocumentsprovider.common.values.BUFFER_SIZE
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageFile
+import com.samsung.cifs.common.utils.getFileName
+import com.samsung.cifs.common.utils.logE
+import com.samsung.cifs.common.values.BUFFER_SIZE
+import com.samsung.cifs.storage.StorageFile
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.FileNotFoundException
 import javax.inject.Inject

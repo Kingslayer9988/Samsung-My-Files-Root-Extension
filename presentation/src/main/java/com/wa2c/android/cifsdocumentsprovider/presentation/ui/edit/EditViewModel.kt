@@ -1,18 +1,18 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.edit
+package com.samsung.cifs.ui.ui.edit
 
 import android.net.Uri
 import androidx.core.net.toUri
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.wa2c.android.cifsdocumentsprovider.common.exception.EditException
-import com.wa2c.android.cifsdocumentsprovider.common.utils.generateUUID
-import com.wa2c.android.cifsdocumentsprovider.domain.model.ConnectionResult
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteConnection
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.EditRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.MainCoroutineScope
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.EditScreenParamHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.EditScreenParamId
+import com.samsung.cifs.common.exception.EditException
+import com.samsung.cifs.common.utils.generateUUID
+import com.samsung.cifs.domain.model.ConnectionResult
+import com.samsung.cifs.domain.model.RemoteConnection
+import com.samsung.cifs.domain.repository.EditRepository
+import com.samsung.cifs.ui.ext.MainCoroutineScope
+import com.samsung.cifs.ui.ui.EditScreenParamHost
+import com.samsung.cifs.ui.ui.EditScreenParamId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow

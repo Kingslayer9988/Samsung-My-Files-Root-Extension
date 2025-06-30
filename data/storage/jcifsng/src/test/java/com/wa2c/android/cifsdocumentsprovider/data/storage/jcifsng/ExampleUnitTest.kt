@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.jcifsng
+package com.samsung.cifs.storage.jcifsng
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

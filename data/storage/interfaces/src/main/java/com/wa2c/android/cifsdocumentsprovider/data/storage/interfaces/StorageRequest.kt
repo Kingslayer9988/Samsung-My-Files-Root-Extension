@@ -1,10 +1,10 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces
+package com.samsung.cifs.storage
 
-import com.wa2c.android.cifsdocumentsprovider.common.utils.appendChild
-import com.wa2c.android.cifsdocumentsprovider.common.utils.mimeType
-import com.wa2c.android.cifsdocumentsprovider.common.values.ThumbnailType
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_SEPARATOR
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_START
+import com.samsung.cifs.common.utils.appendChild
+import com.samsung.cifs.common.utils.mimeType
+import com.samsung.cifs.common.values.ThumbnailType
+import com.samsung.cifs.common.values.URI_SEPARATOR
+import com.samsung.cifs.common.values.URI_START
 
 /**
  * Storage Request

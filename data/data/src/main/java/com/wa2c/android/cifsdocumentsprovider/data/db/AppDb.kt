@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.data.db
+package com.samsung.cifs.data.db
 
 import android.content.Context
 import androidx.room.AutoMigration

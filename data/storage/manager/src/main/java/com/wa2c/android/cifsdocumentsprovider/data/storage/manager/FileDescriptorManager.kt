@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.manager
+package com.samsung.cifs.storage.manager
 
 import android.content.Context
 import android.media.MediaMetadataRetriever
@@ -7,9 +7,9 @@ import android.os.HandlerThread
 import android.os.ParcelFileDescriptor
 import android.os.ProxyFileDescriptorCallback
 import android.os.storage.StorageManager
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logE
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.common.values.BUFFER_SIZE
+import com.samsung.cifs.common.utils.logE
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.common.values.BUFFER_SIZE
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

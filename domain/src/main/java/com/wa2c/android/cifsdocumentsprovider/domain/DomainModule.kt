@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.domain
+package com.samsung.cifs.domain
 
 import dagger.Module
 import dagger.Provides

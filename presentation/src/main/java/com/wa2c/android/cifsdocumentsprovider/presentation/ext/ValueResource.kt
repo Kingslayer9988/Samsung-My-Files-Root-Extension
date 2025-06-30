@@ -1,18 +1,18 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ext
+package com.samsung.cifs.ui.ext
 
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
-import com.wa2c.android.cifsdocumentsprovider.common.exception.AppException
-import com.wa2c.android.cifsdocumentsprovider.common.exception.EditException
-import com.wa2c.android.cifsdocumentsprovider.domain.model.ConnectionResult
-import com.wa2c.android.cifsdocumentsprovider.common.values.HostSortType
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendDataState
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.common.values.ThumbnailType
-import com.wa2c.android.cifsdocumentsprovider.common.values.UiTheme
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.PopupMessageType
+import com.samsung.cifs.common.exception.AppException
+import com.samsung.cifs.common.exception.EditException
+import com.samsung.cifs.domain.model.ConnectionResult
+import com.samsung.cifs.common.values.HostSortType
+import com.samsung.cifs.domain.model.SendDataState
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.common.values.ThumbnailType
+import com.samsung.cifs.common.values.UiTheme
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.PopupMessageType
 
 val Throwable?.labelRes: Int
     @StringRes

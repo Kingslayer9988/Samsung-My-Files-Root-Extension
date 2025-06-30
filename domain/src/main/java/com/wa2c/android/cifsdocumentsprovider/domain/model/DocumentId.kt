@@ -1,11 +1,11 @@
-package com.wa2c.android.cifsdocumentsprovider.domain.model
+package com.samsung.cifs.domain.model
 
 import android.os.Parcelable
-import com.wa2c.android.cifsdocumentsprovider.common.utils.appendChild
-import com.wa2c.android.cifsdocumentsprovider.common.values.DOCUMENT_ID_DELIMITER
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_SEPARATOR
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageConnection
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageFile
+import com.samsung.cifs.common.utils.appendChild
+import com.samsung.cifs.common.values.DOCUMENT_ID_DELIMITER
+import com.samsung.cifs.common.values.URI_SEPARATOR
+import com.samsung.cifs.storage.StorageConnection
+import com.samsung.cifs.storage.StorageFile
 import kotlinx.parcelize.Parcelize
 
 /**

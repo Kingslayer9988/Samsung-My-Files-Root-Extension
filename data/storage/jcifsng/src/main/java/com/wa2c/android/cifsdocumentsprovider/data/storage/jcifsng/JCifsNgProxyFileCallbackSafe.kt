@@ -14,13 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.wa2c.android.cifsdocumentsprovider.data.storage.jcifsng
+package com.samsung.cifs.storage.jcifsng
 
 import android.os.ProxyFileDescriptorCallback
 import android.system.ErrnoException
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.checkAccessMode
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.utils.processFileIo
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.storage.utils.checkAccessMode
+import com.samsung.cifs.storage.utils.processFileIo
 import jcifs.smb.SmbFile
 import jcifs.smb.SmbRandomAccessFile
 import kotlinx.coroutines.*

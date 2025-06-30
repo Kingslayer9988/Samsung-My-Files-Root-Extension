@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.edit.components
+package com.samsung.cifs.ui.ui.edit.components
 
 import android.content.res.Configuration
 import android.view.KeyEvent
@@ -39,10 +39,10 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.moveFocusOnEnter
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.moveFocusOnTab
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.moveFocusOnEnter
+import com.samsung.cifs.ui.ui.common.moveFocusOnTab
 
 /**
  * Input text

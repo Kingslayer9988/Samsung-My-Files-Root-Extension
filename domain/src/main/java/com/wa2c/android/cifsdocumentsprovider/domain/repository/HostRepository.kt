@@ -1,9 +1,9 @@
-package com.wa2c.android.cifsdocumentsprovider.domain.repository
+package com.samsung.cifs.domain.repository
 
-import com.wa2c.android.cifsdocumentsprovider.common.values.HostSortType
-import com.wa2c.android.cifsdocumentsprovider.data.HostFinder
-import com.wa2c.android.cifsdocumentsprovider.data.preference.AppPreferencesDataStore
-import com.wa2c.android.cifsdocumentsprovider.domain.model.HostData
+import com.samsung.cifs.common.values.HostSortType
+import com.samsung.cifs.data.HostFinder
+import com.samsung.cifs.data.preference.AppPreferencesDataStore
+import com.samsung.cifs.domain.model.HostData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject

@@ -1,10 +1,10 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.manager
+package com.samsung.cifs.storage.manager
 
 import android.content.Context
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.JSchUnknownHostKeyException
 import com.jcraft.jsch.KeyPair
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logW
+import com.samsung.cifs.common.utils.logW
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject

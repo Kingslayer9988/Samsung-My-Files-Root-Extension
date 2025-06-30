@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column

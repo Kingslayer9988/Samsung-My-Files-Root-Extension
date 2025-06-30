@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.domain.model
+package com.samsung.cifs.domain.model
 
 /**
  * Server connection result

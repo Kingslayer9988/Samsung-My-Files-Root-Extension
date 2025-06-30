@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings
+package com.samsung.cifs.ui.ui.settings
 
 import android.content.ClipData
 import android.content.Intent
@@ -42,23 +42,23 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mikepenz.aboutlibraries.ui.compose.LibrariesContainer
 import com.mikepenz.aboutlibraries.ui.compose.LibraryDefaults
 import com.mikepenz.aboutlibraries.ui.compose.libraryColors
-import com.wa2c.android.cifsdocumentsprovider.common.values.OPEN_FILE_LIMIT_DEFAULT
-import com.wa2c.android.cifsdocumentsprovider.common.values.UiTheme
-import com.wa2c.android.cifsdocumentsprovider.domain.model.KnownHost
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteConnection
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.Language
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.mode
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.AppSnackbarHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.MutableStateAdapter
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.PopupMessageType
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getAppTopAppBarColors
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showError
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showPopup
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components.SettingsKnownHostList
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components.SettingsList
+import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_DEFAULT
+import com.samsung.cifs.common.values.UiTheme
+import com.samsung.cifs.domain.model.KnownHost
+import com.samsung.cifs.domain.model.RemoteConnection
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.Language
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ext.mode
+import com.samsung.cifs.ui.ui.common.AppSnackbarHost
+import com.samsung.cifs.ui.ui.common.MutableStateAdapter
+import com.samsung.cifs.ui.ui.common.PopupMessageType
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getAppTopAppBarColors
+import com.samsung.cifs.ui.ui.common.showError
+import com.samsung.cifs.ui.ui.common.showPopup
+import com.samsung.cifs.ui.ui.settings.components.SettingsKnownHostList
+import com.samsung.cifs.ui.ui.settings.components.SettingsList
 import kotlinx.coroutines.launch
 
 /**

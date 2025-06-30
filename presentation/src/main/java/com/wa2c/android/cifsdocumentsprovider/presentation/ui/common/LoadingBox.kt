@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.smbj
+package com.samsung.cifs.storage.smbj
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

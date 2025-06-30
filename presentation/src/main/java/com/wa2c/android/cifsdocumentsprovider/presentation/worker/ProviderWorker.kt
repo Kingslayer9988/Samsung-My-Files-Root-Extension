@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.worker
+package com.samsung.cifs.ui.worker
 
 import android.content.Context
 import android.os.Handler
@@ -6,10 +6,10 @@ import android.os.Looper
 import androidx.lifecycle.coroutineScope
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.StorageRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.provideStorageRepository
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.domain.repository.StorageRepository
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.provideStorageRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.launch

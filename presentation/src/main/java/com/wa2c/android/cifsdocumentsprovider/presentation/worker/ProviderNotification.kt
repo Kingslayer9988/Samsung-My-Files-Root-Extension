@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.worker
+package com.samsung.cifs.ui.worker
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -9,10 +9,10 @@ import android.net.Uri
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.work.ForegroundInfo
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getFileName
-import com.wa2c.android.cifsdocumentsprovider.common.values.NOTIFICATION_CHANNEL_ID_PROVIDER
-import com.wa2c.android.cifsdocumentsprovider.common.values.NOTIFICATION_ID_PROVIDER
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
+import com.samsung.cifs.common.utils.getFileName
+import com.samsung.cifs.common.values.NOTIFICATION_CHANNEL_ID_PROVIDER
+import com.samsung.cifs.common.values.NOTIFICATION_ID_PROVIDER
+import com.samsung.cifs.ui.R
 
 /**
  * Provider Notification

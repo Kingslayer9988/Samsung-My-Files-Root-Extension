@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.edit.components
+package com.samsung.cifs.ui.ui.edit.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -12,10 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.CommonDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.CommonDialog
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.Theme
 
 /**
  * Key input dialog.

@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.common.utils
+package com.samsung.cifs.common.utils
 
 import timber.log.Timber
 

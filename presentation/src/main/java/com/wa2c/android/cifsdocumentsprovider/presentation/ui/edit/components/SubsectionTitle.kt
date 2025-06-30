@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.edit.components
+package com.samsung.cifs.ui.ui.edit.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.Theme
 
 @Composable
 fun SubsectionTitle(

@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.calculateEndPadding
@@ -11,7 +11,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
-import com.wa2c.android.cifsdocumentsprovider.common.values.UiTheme
+import com.samsung.cifs.common.values.UiTheme
 
 @Composable
 fun Dp.toSp() = with(LocalDensity.current) {  this@toSp.toSp() }

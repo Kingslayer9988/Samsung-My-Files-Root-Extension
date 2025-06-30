@@ -1,7 +1,7 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces
+package com.samsung.cifs.storage
 
 import android.os.ProxyFileDescriptorCallback
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
+import com.samsung.cifs.common.values.AccessMode
 
 interface StorageClient {
 

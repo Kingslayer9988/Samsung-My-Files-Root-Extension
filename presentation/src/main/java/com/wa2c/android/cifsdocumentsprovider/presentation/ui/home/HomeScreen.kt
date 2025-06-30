@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.home
+package com.samsung.cifs.ui.ui.home
 
 import android.content.res.Configuration
 import android.net.Uri
@@ -40,18 +40,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteConnectionIndex
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.labelRes
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.AppSnackbarHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.PopupMessageType
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getAppTopAppBarColors
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showError
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showPopup
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.domain.model.RemoteConnectionIndex
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.labelRes
+import com.samsung.cifs.ui.ui.common.AppSnackbarHost
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.PopupMessageType
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getAppTopAppBarColors
+import com.samsung.cifs.ui.ui.common.showError
+import com.samsung.cifs.ui.ui.common.showPopup
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -274,13 +274,13 @@ private fun HomeScreenContainerPreview() {
                     id = "",
                     name = "PC1PC1PC1PC1",
                     storage = StorageType.JCIFS,
-                    uri = "content://com.wa2c.android.cifsdocumentsprovider.provider/"
+                    uri = "content://com.samsung.cifs.provider/"
                 ),
                 RemoteConnectionIndex(
                     id = "",
                     name = "PC2PC2PC2PC2PC2PC2PC2PC2PC2PC2PC2PC2PC2",
                     storage = StorageType.JCIFS,
-                    uri = "content://com.wa2c.android.cifsdocumentsprovider.provider/test",
+                    uri = "content://com.samsung.cifs.provider/test",
                 ),
                 RemoteConnectionIndex(
                     id = "",

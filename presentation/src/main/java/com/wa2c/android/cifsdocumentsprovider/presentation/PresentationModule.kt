@@ -1,8 +1,8 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation
+package com.samsung.cifs.ui
 
 import android.content.Context
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.StorageRepository
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.SendRepository
+import com.samsung.cifs.domain.repository.StorageRepository
+import com.samsung.cifs.domain.repository.SendRepository
 import dagger.Module
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn

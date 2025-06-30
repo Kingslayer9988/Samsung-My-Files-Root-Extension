@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.receive
+package com.samsung.cifs.ui.ui.receive
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -6,7 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getFileName
+import com.samsung.cifs.common.utils.getFileName
 
 @Composable
 fun ReceiveFile(

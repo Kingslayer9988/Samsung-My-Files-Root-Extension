@@ -1,7 +1,7 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.apache
+package com.samsung.cifs.data.storage.apache
 
-import com.wa2c.android.cifsdocumentsprovider.common.values.CONNECTION_TIMEOUT
-import com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces.StorageConnection
+import com.samsung.cifs.common.values.CONNECTION_TIMEOUT
+import com.samsung.cifs.storage.StorageConnection
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import org.apache.commons.vfs2.FileSystemOptions

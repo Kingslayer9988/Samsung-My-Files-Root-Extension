@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components
+package com.samsung.cifs.ui.ui.settings.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -12,8 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.Theme
 
 /**
  * Settings item.

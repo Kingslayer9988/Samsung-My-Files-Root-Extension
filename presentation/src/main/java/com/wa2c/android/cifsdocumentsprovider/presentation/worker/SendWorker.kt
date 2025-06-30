@@ -1,13 +1,13 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.worker
+package com.samsung.cifs.ui.worker
 
 import android.content.Context
 import androidx.lifecycle.coroutineScope
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.SendRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.provideSendRepository
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.domain.repository.SendRepository
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.provideSendRepository
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 

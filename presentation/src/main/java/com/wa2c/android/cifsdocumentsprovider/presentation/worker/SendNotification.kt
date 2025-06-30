@@ -1,6 +1,6 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.worker
+package com.samsung.cifs.ui.worker
 
-import com.wa2c.android.cifsdocumentsprovider.common.values.NOTIFICATION_ID_SEND
+import com.samsung.cifs.common.values.NOTIFICATION_ID_SEND
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -11,12 +11,12 @@ import android.content.pm.ServiceInfo
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.work.ForegroundInfo
-import com.wa2c.android.cifsdocumentsprovider.common.values.NOTIFICATION_CHANNEL_ID_SEND
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendDataState
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendData
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.getSummaryText
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.MainActivity
+import com.samsung.cifs.common.values.NOTIFICATION_CHANNEL_ID_SEND
+import com.samsung.cifs.domain.model.SendDataState
+import com.samsung.cifs.domain.model.SendData
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.getSummaryText
+import com.samsung.cifs.ui.ui.MainActivity
 
 /**
  * Send Notification

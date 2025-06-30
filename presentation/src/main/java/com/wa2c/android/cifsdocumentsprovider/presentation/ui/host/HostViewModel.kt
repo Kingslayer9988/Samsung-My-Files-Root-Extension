@@ -1,12 +1,12 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.host
+package com.samsung.cifs.ui.ui.host
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.wa2c.android.cifsdocumentsprovider.common.values.HostSortType
-import com.wa2c.android.cifsdocumentsprovider.domain.model.HostData
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.HostRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.MainCoroutineScope
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.HostScreenParamId
+import com.samsung.cifs.common.values.HostSortType
+import com.samsung.cifs.domain.model.HostData
+import com.samsung.cifs.domain.repository.HostRepository
+import com.samsung.cifs.ui.ext.MainCoroutineScope
+import com.samsung.cifs.ui.ui.HostScreenParamId
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow

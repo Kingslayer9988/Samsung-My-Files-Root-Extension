@@ -20,9 +20,9 @@ import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.OptionItem
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.moveFocusOnEnter
+import com.samsung.cifs.ui.ui.common.OptionItem
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.moveFocusOnEnter
 
 /**
  * Input Option

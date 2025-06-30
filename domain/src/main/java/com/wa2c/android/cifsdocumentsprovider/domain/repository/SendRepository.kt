@@ -1,13 +1,13 @@
-package com.wa2c.android.cifsdocumentsprovider.domain.repository
+package com.samsung.cifs.domain.repository
 
 import android.net.Uri
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.data.storage.manager.DocumentFileManager
-import com.wa2c.android.cifsdocumentsprovider.domain.IoDispatcher
-import com.wa2c.android.cifsdocumentsprovider.domain.mapper.DomainMapper.toSendData
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendData
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendDataState
-import com.wa2c.android.cifsdocumentsprovider.domain.model.getCurrentReady
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.storage.manager.DocumentFileManager
+import com.samsung.cifs.domain.IoDispatcher
+import com.samsung.cifs.domain.mapper.DomainMapper.toSendData
+import com.samsung.cifs.domain.model.SendData
+import com.samsung.cifs.domain.model.SendDataState
+import com.samsung.cifs.domain.model.getCurrentReady
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

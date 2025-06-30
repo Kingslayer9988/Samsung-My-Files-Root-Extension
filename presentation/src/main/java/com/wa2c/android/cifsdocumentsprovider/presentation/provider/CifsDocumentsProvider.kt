@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.provider
+package com.samsung.cifs.ui.provider
 
 import android.app.AuthenticationRequiredException
 import android.app.PendingIntent
@@ -20,22 +20,22 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.WorkQuery
-import com.wa2c.android.cifsdocumentsprovider.common.exception.StorageException
-import com.wa2c.android.cifsdocumentsprovider.common.utils.appendChild
-import com.wa2c.android.cifsdocumentsprovider.common.utils.logD
-import com.wa2c.android.cifsdocumentsprovider.common.utils.mimeType
-import com.wa2c.android.cifsdocumentsprovider.common.values.AccessMode
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_AUTHORITY
-import com.wa2c.android.cifsdocumentsprovider.common.values.URI_SEPARATOR
-import com.wa2c.android.cifsdocumentsprovider.domain.model.DocumentId
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteFile
-import com.wa2c.android.cifsdocumentsprovider.domain.repository.StorageRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.createAuthenticatePendingIntent
-import com.wa2c.android.cifsdocumentsprovider.presentation.provideStorageRepository
-import com.wa2c.android.cifsdocumentsprovider.presentation.worker.ProviderWorker
-import com.wa2c.android.cifsdocumentsprovider.presentation.worker.WorkerLifecycleOwner
+import com.samsung.cifs.common.exception.StorageException
+import com.samsung.cifs.common.utils.appendChild
+import com.samsung.cifs.common.utils.logD
+import com.samsung.cifs.common.utils.mimeType
+import com.samsung.cifs.common.values.AccessMode
+import com.samsung.cifs.common.values.URI_AUTHORITY
+import com.samsung.cifs.common.values.URI_SEPARATOR
+import com.samsung.cifs.domain.model.DocumentId
+import com.samsung.cifs.domain.model.RemoteFile
+import com.samsung.cifs.domain.repository.StorageRepository
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ext.createAuthenticatePendingIntent
+import com.samsung.cifs.ui.provideStorageRepository
+import com.samsung.cifs.ui.worker.ProviderWorker
+import com.samsung.cifs.ui.worker.WorkerLifecycleOwner
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -45,7 +45,7 @@ import java.io.IOException
 /**
  * CIFS DocumentsProvider
  */
-class CifsDocumentsProvider : DocumentsProvider() {
+class cifs : DocumentsProvider() {
 
     /** Context */
     private val providerContext: Context by lazy { context!! }

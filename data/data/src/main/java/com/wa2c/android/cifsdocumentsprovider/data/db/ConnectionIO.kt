@@ -1,8 +1,8 @@
-package com.wa2c.android.cifsdocumentsprovider.data.db
+package com.samsung.cifs.data.db
 
 import android.content.Context
 import androidx.core.net.toUri
-import com.wa2c.android.cifsdocumentsprovider.data.EncryptUtils
+import com.samsung.cifs.data.EncryptUtils
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,6 +1,6 @@
-package com.wa2c.android.cifsdocumentsprovider.common.values
+package com.samsung.cifs.common.values
 
-const val URI_AUTHORITY = "com.wa2c.android.cifsdocumentsprovider.documents"
+const val URI_AUTHORITY = "com.samsung.cifs.documents"
 
 const val URI_START = "://"
 const val URI_SEPARATOR = '/'

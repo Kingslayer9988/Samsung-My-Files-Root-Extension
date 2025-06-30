@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.home
+package com.samsung.cifs.ui.ui.home
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.Spring
@@ -50,8 +50,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.Theme
 
 /**
  * Multi floating action button.

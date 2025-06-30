@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation
+package com.samsung.cifs.ui
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -18,7 +18,7 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals(
-            "com.wa2c.android.cifsdocumentsprovider.presentation.test",
+            "com.samsung.cifs.presentation.test",
             appContext.packageName
         )
     }

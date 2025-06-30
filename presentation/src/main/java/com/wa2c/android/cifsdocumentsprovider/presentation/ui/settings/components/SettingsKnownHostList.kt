@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components
+package com.samsung.cifs.ui.ui.settings.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -34,14 +34,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.wa2c.android.cifsdocumentsprovider.domain.model.KnownHost
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteConnection
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.CommonDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getTextWidth
+import com.samsung.cifs.domain.model.KnownHost
+import com.samsung.cifs.domain.model.RemoteConnection
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.CommonDialog
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getTextWidth
 
 /**
  * Known Host List

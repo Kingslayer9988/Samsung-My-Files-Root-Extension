@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.folder
+package com.samsung.cifs.ui.ui.folder
 
 import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
@@ -36,18 +36,18 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.wa2c.android.cifsdocumentsprovider.domain.model.DocumentId
-import com.wa2c.android.cifsdocumentsprovider.domain.model.RemoteFile
-import com.wa2c.android.cifsdocumentsprovider.domain.model.StorageUri
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.AppSnackbarHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.BottomButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.LoadingIconButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getAppTopAppBarColors
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showError
+import com.samsung.cifs.domain.model.DocumentId
+import com.samsung.cifs.domain.model.RemoteFile
+import com.samsung.cifs.domain.model.StorageUri
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ui.common.AppSnackbarHost
+import com.samsung.cifs.ui.ui.common.BottomButton
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.LoadingIconButton
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getAppTopAppBarColors
+import com.samsung.cifs.ui.ui.common.showError
 
 /**
  * Folder Screen

@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ext
+package com.samsung.cifs.ui.ext
 
 import android.app.PendingIntent
 import android.content.Context
@@ -9,9 +9,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendData
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendDataState
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.MainActivity
+import com.samsung.cifs.domain.model.SendData
+import com.samsung.cifs.domain.model.SendDataState
+import com.samsung.cifs.ui.ui.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

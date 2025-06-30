@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.common
+package com.samsung.cifs.ui.ui.common
 
 import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider

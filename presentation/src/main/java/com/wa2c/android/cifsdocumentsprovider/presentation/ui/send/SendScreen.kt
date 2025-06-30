@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.send
+package com.samsung.cifs.ui.ui.send
 
 import android.content.res.Configuration
 import android.net.Uri
@@ -39,17 +39,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendData
-import com.wa2c.android.cifsdocumentsprovider.domain.model.SendDataState
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.getSummaryText
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.AppSnackbarHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.CommonDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerNormal
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getAppTopAppBarColors
+import com.samsung.cifs.domain.model.SendData
+import com.samsung.cifs.domain.model.SendDataState
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.getSummaryText
+import com.samsung.cifs.ui.ui.common.AppSnackbarHost
+import com.samsung.cifs.ui.ui.common.CommonDialog
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.DividerNormal
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getAppTopAppBarColors
 
 @Composable
 fun SendScreen(

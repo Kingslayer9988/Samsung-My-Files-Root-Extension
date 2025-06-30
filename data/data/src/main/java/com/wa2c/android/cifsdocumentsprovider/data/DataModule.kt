@@ -1,8 +1,8 @@
-package com.wa2c.android.cifsdocumentsprovider.data
+package com.samsung.cifs.data
 
 import android.content.Context
-import com.wa2c.android.cifsdocumentsprovider.data.db.AppDatabase
-import com.wa2c.android.cifsdocumentsprovider.data.preference.AppPreferencesDataStore
+import com.samsung.cifs.data.db.AppDatabase
+import com.samsung.cifs.data.preference.AppPreferencesDataStore
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

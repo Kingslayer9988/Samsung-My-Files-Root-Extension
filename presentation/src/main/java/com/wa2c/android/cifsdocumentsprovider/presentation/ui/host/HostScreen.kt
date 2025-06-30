@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.host
+package com.samsung.cifs.ui.ui.host
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -34,21 +34,21 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.wa2c.android.cifsdocumentsprovider.common.values.HostSortType
-import com.wa2c.android.cifsdocumentsprovider.domain.model.HostData
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.labelRes
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.AppSnackbarHost
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.BottomButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.CommonDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DividerThin
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.LoadingIconButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.SingleChoiceDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.getAppTopAppBarColors
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.showError
+import com.samsung.cifs.common.values.HostSortType
+import com.samsung.cifs.domain.model.HostData
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ext.labelRes
+import com.samsung.cifs.ui.ui.common.AppSnackbarHost
+import com.samsung.cifs.ui.ui.common.BottomButton
+import com.samsung.cifs.ui.ui.common.CommonDialog
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.DividerThin
+import com.samsung.cifs.ui.ui.common.LoadingIconButton
+import com.samsung.cifs.ui.ui.common.SingleChoiceDialog
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.getAppTopAppBarColors
+import com.samsung.cifs.ui.ui.common.showError
 
 /**
  * Host Screen

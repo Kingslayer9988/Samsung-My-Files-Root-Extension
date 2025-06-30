@@ -1,8 +1,8 @@
-package com.wa2c.android.cifsdocumentsprovider.data
+package com.samsung.cifs.data
 
 import android.util.Base64
-import com.wa2c.android.cifsdocumentsprovider.common.values.PASSWORD_LENGTH_16
-import com.wa2c.android.cifsdocumentsprovider.common.values.PASSWORD_LENGTH_32
+import com.samsung.cifs.common.values.PASSWORD_LENGTH_16
+import com.samsung.cifs.common.values.PASSWORD_LENGTH_32
 import javax.crypto.Cipher
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec

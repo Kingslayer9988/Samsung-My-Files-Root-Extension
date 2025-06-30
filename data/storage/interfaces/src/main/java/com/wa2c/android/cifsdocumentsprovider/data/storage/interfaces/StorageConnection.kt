@@ -1,9 +1,9 @@
-package com.wa2c.android.cifsdocumentsprovider.data.storage.interfaces
+package com.samsung.cifs.storage
 
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getPort
-import com.wa2c.android.cifsdocumentsprovider.common.utils.getUriText
-import com.wa2c.android.cifsdocumentsprovider.common.values.StorageType
-import com.wa2c.android.cifsdocumentsprovider.common.values.USER_GUEST
+import com.samsung.cifs.common.utils.getPort
+import com.samsung.cifs.common.utils.getUriText
+import com.samsung.cifs.common.values.StorageType
+import com.samsung.cifs.common.values.USER_GUEST
 import kotlinx.serialization.Serializable
 
 /**

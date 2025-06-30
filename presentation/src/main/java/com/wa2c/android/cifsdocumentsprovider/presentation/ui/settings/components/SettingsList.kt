@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components
+package com.samsung.cifs.ui.ui.settings.components
 
 import android.content.Intent
 import android.content.res.Configuration
@@ -13,15 +13,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.Language
-import com.wa2c.android.cifsdocumentsprovider.common.values.OPEN_FILE_LIMIT_DEFAULT
-import com.wa2c.android.cifsdocumentsprovider.common.values.OPEN_FILE_LIMIT_MAX
-import com.wa2c.android.cifsdocumentsprovider.common.values.OPEN_FILE_LIMIT_MIN
-import com.wa2c.android.cifsdocumentsprovider.common.values.UiTheme
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.getLabel
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.OptionItem
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
+import com.samsung.cifs.ui.ext.Language
+import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_DEFAULT
+import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_MAX
+import com.samsung.cifs.common.values.OPEN_FILE_LIMIT_MIN
+import com.samsung.cifs.common.values.UiTheme
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ext.getLabel
+import com.samsung.cifs.ui.ui.common.OptionItem
+import com.samsung.cifs.ui.ui.common.Theme
 
 /**
  * Settings Screen

@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.components
+package com.samsung.cifs.ui.ui.settings.components
 
 import android.content.res.Configuration
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -33,14 +33,14 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.wa2c.android.cifsdocumentsprovider.common.values.ImportOption
-import com.wa2c.android.cifsdocumentsprovider.common.values.PASSWORD_LENGTH_32
-import com.wa2c.android.cifsdocumentsprovider.presentation.R
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.CommonDialog
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.DialogButton
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.Theme
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.common.enabledStyle
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.SettingsViewModel
+import com.samsung.cifs.common.values.ImportOption
+import com.samsung.cifs.common.values.PASSWORD_LENGTH_32
+import com.samsung.cifs.ui.R
+import com.samsung.cifs.ui.ui.common.CommonDialog
+import com.samsung.cifs.ui.ui.common.DialogButton
+import com.samsung.cifs.ui.ui.common.Theme
+import com.samsung.cifs.ui.ui.common.enabledStyle
+import com.samsung.cifs.ui.ui.settings.SettingsViewModel
 
 /**
  * Settings import item

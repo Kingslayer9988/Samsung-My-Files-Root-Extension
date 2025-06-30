@@ -1,4 +1,4 @@
-package com.wa2c.android.cifsdocumentsprovider.presentation.ui
+package com.samsung.cifs.ui.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -19,15 +19,15 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
 import androidx.navigation.navOptions
-import com.wa2c.android.cifsdocumentsprovider.domain.model.StorageUri
-import com.wa2c.android.cifsdocumentsprovider.presentation.ext.collectIn
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.edit.EditScreen
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.folder.FolderScreen
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.home.HomeScreen
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.host.HostScreen
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.receive.ReceiveFile
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.send.SendScreen
-import com.wa2c.android.cifsdocumentsprovider.presentation.ui.settings.SettingsScreen
+import com.samsung.cifs.domain.model.StorageUri
+import com.samsung.cifs.ui.ext.collectIn
+import com.samsung.cifs.ui.ui.edit.EditScreen
+import com.samsung.cifs.ui.ui.folder.FolderScreen
+import com.samsung.cifs.ui.ui.home.HomeScreen
+import com.samsung.cifs.ui.ui.host.HostScreen
+import com.samsung.cifs.ui.ui.receive.ReceiveFile
+import com.samsung.cifs.ui.ui.send.SendScreen
+import com.samsung.cifs.ui.ui.settings.SettingsScreen
 
 /**
  * Main nav host
