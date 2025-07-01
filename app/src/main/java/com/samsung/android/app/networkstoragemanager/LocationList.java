@@ -70,32 +70,45 @@ public class LocationList {
         ArrayList<Bundle> defaultList = new ArrayList<>();
         Bundle bStorage;
 
-        // Present FTP/SFTP options that Samsung My Files understands, but redirect to SMB/CIFS backend
+        // Present meaningful options with proper routing that match the button functions
         
-        // 1. "Add Root Location" - disguised as FTP server
+        // 1. "Root Filesystem Access" - via FTP protocol routing
         bStorage = new Bundle();
         bStorage.putBoolean("isAnonymousMode", true);
         bStorage.putInt("serverPort", 21);
         if (serverIds) bStorage.putLong("serverId", 1);
         bStorage.putString("serverAddr", "ftp://root.local");
-        bStorage.putString("serverName", "🔓 Add Root Location");
+        bStorage.putString("serverName", "📁 Root Filesystem Access");
         bStorage.putString("sharedFolder", "");
         bStorage.putString("connectionType", "FTP");
         bStorage.putString("serverType", "ROOT_ACCESS");
         bStorage.putString("protocol", "FTP");
         defaultList.add(new Bundle(bStorage));
 
-        // 2. "Add SMB/CIFS Share" - disguised as SFTP server  
+        // 2. "Browse Root Folders" - via SFTP protocol routing
         bStorage = new Bundle();
         bStorage.putBoolean("isAnonymousMode", true);
         bStorage.putInt("serverPort", 22);
         if (serverIds) bStorage.putLong("serverId", 2);
         bStorage.putString("serverAddr", "sftp://smb.local");
-        bStorage.putString("serverName", "🌐 Add SMB/CIFS Share");
+        bStorage.putString("serverName", "📂 Browse Root Folders");
         bStorage.putString("sharedFolder", "");
         bStorage.putString("connectionType", "SFTP");
-        bStorage.putString("serverType", "SMB_ACCESS");
+        bStorage.putString("serverType", "FOLDER_BROWSE");
         bStorage.putString("protocol", "SFTP");
+        defaultList.add(new Bundle(bStorage));
+
+        // 3. "Add SMB/CIFS Share" - via SMB protocol routing
+        bStorage = new Bundle();
+        bStorage.putBoolean("isAnonymousMode", true);
+        bStorage.putInt("serverPort", 445);
+        if (serverIds) bStorage.putLong("serverId", 3);
+        bStorage.putString("serverAddr", "smb:");
+        bStorage.putString("serverName", "🌐 Add SMB/CIFS Share");
+        bStorage.putString("sharedFolder", "");
+        bStorage.putString("connectionType", "SMB");
+        bStorage.putString("serverType", "SMB_ACCESS");
+        bStorage.putString("protocol", "SMB");
         defaultList.add(new Bundle(bStorage));
 
         return defaultList;

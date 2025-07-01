@@ -170,17 +170,16 @@ public class CifsIntegration {
     }
     
     public static void openCifsManager(Context context) {
-        Log.i(TAG, "Opening CIFS Documents Provider for configuration");
+        Log.i(TAG, "Opening SMB/CIFS configuration activity");
         
         try {
-            // Try to start the CIFS Documents Provider activity directly
-            // Since it's integrated into our app, we can access it via the presentation module
-            Intent intent = new Intent();
-            intent.setClassName(context.getPackageName(), "com.samsung.cifs.presentation.ui.main.MainActivity");
+            // Launch our SMB/CIFS share configuration activity
+            Intent intent = new Intent(context, com.samsung.android.app.networkstoragemanager.activity.AddSmbShareActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
+            Log.i(TAG, "Successfully launched AddSmbShareActivity");
         } catch (Exception e) {
-            Log.e(TAG, "Error launching CIFS configuration activity", e);
+            Log.e(TAG, "Error launching AddSmbShareActivity", e);
             // Fallback: try to open the external CIFS Documents Provider if available
             openExternalCifsDocumentsProvider(context);
         }

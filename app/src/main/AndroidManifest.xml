@@ -36,6 +36,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="ftp" />
             </intent-filter>
+            <!-- Make it launchable from app drawer -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- SFTP Activity - Now used for "Add SMB/CIFS Share" -->
@@ -47,6 +52,11 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="sftp" />
+            </intent-filter>
+            <!-- Make it launchable from app drawer -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

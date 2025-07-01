@@ -98,28 +98,45 @@ public class MainService extends Service implements RequestCode {
                 Log.i(TAG, "GET_SERVER_LIST request for type: " + requestInfo.mType);
                 if (requestInfo.mType != null) {
                     if (requestInfo.mType.equals("FTP")) {
-                        // Return root access options disguised as FTP
+                        // Return only FTP entries (root access)
                         ArrayList<Bundle> ftpServers = new ArrayList<>();
                         for (Bundle location : storageLocations) {
-                            if ("FTP".equals(location.getString("connectionType")) || 
-                                "ROOT_ACCESS".equals(location.getString("serverType"))) {
+                            if ("FTP".equals(location.getString("connectionType"))) {
                                 ftpServers.add(location);
                             }
                         }
                         result.putParcelableArrayList("serverList", ftpServers);
                     } else if (requestInfo.mType.equals("SFTP")) {
-                        // Return SMB/CIFS options disguised as SFTP
+                        // Return only SFTP entries (SMB/CIFS access)
                         ArrayList<Bundle> sftpServers = new ArrayList<>();
                         for (Bundle location : storageLocations) {
-                            if ("SFTP".equals(location.getString("connectionType")) || 
-                                "SMB_ACCESS".equals(location.getString("serverType"))) {
+                            if ("SFTP".equals(location.getString("connectionType"))) {
                                 sftpServers.add(location);
                             }
                         }
                         result.putParcelableArrayList("serverList", sftpServers);
+                    } else if (requestInfo.mType.equals("FTPS")) {
+                        // FTPS = FTP over SSL, treat as FTP for root access
+                        ArrayList<Bundle> ftpsServers = new ArrayList<>();
+                        for (Bundle location : storageLocations) {
+                            if ("FTP".equals(location.getString("connectionType")) || 
+                                "FTPS".equals(location.getString("connectionType"))) {
+                                ftpsServers.add(location);
+                            }
+                        }
+                        result.putParcelableArrayList("serverList", ftpsServers);
+                    } else if (requestInfo.mType.equals("SMB")) {
+                        // Return only real SMB entries (actual SMB shares)
+                        ArrayList<Bundle> smbServers = new ArrayList<>();
+                        for (Bundle location : storageLocations) {
+                            if ("SMB".equals(location.getString("connectionType"))) {
+                                smbServers.add(location);
+                            }
+                        }
+                        result.putParcelableArrayList("serverList", smbServers);
                     } else {
-                        // For any other type or generic request, return all servers
-                        result.putParcelableArrayList("serverList", storageLocations);
+                        // For any other type, return empty list
+                        result.putParcelableArrayList("serverList", new ArrayList<Bundle>());
                     }
                 } else {
                     // No type specified, return all servers
@@ -128,20 +145,31 @@ public class MainService extends Service implements RequestCode {
                 result.putBoolean("result", true);
                 break;
             case ADD_SERVER:
-                //2 - Detect special server addresses and route to appropriate functionality
+                //2 - Route ADD_SERVER requests based on protocol type or special addresses
                 String connectionType = extras.getString("connectionType", "");
                 String serverType = extras.getString("serverType", "");
                 String serverAddr = extras.getString("serverAddr", "");
                 String protocol = extras.getString("protocol", "");
+                String type = requestInfo.mType; // This is the protocol type Samsung My Files sends
                 
-                Log.i(TAG, "ADD_SERVER request - connectionType: " + connectionType + 
-                     ", serverType: " + serverType + ", serverAddr: " + serverAddr + 
-                     ", protocol: " + protocol);
+                Log.i(TAG, "ADD_SERVER request - type: '" + type + "', connectionType: '" + connectionType + 
+                     "', serverType: '" + serverType + "', serverAddr: '" + serverAddr + 
+                     "', protocol: '" + protocol + "'");
                 
-                // Check if this is one of our special server addresses
-                if ("ROOT_ACCESS".equals(serverType) || "ftp://root.local".equals(serverAddr)) {
-                    // Route to root access functionality
-                    Log.i(TAG, "Routing ADD_SERVER to root access functionality");
+                // Check for real server address first (this takes priority over protocol routing)
+                if (serverAddr != null && !serverAddr.isEmpty() && 
+                    !serverAddr.equals("ftp://root.local") && !serverAddr.equals("sftp://smb.local") && 
+                    isRealServerAddress(serverAddr)) {
+                    // Real server configuration with actual address - store it
+                    Log.i(TAG, "Storing real server configuration - type: " + type + ", addr: " + serverAddr);
+                    Bundle newServer = new Bundle(extras);
+                    newServer.putLong("serverId", System.currentTimeMillis());
+                    storageLocations.add(newServer);
+                    result.putBoolean("result", true);
+                    result.putLong("serverId", newServer.getLong("serverId"));
+                } else if ("FTP".equals(type) || "ROOT_ACCESS".equals(serverType) || "ftp://root.local".equals(serverAddr)) {
+                    // FTP button pressed or our special root access server selected
+                    Log.i(TAG, "Routing ADD_SERVER to root filesystem access (FTP type)");
                     try {
                         Intent rootIntent = new Intent(this, com.samsung.android.app.networkstoragemanager.activity.AddRootLocationActivity.class);
                         rootIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -152,33 +180,45 @@ public class MainService extends Service implements RequestCode {
                         Log.e(TAG, "Error launching AddRootLocationActivity", e);
                         result.putBoolean("result", false);
                     }
-                } else if ("SMB_ACCESS".equals(serverType) || "sftp://smb.local".equals(serverAddr)) {
-                    // Route to SMB/CIFS functionality
-                    Log.i(TAG, "Routing ADD_SERVER to SMB/CIFS functionality");
+                } else if ("FTPS".equals(type)) {
+                    // FTPS button pressed - show Samsung's native FTP dialog for secure FTP
+                    Log.i(TAG, "Routing ADD_SERVER to native Samsung FTP dialog (FTPS type)");
+                    result.putBoolean("result", false); // Let Samsung handle FTPS natively
+                } else if ("SFTP".equals(type) || "SMB_ACCESS".equals(serverType) || "sftp://smb.local".equals(serverAddr)) {
+                    // SFTP button pressed or our special SMB access server selected
+                    Log.i(TAG, "Routing ADD_SERVER to browse root folders activity (SFTP type)");
                     try {
-                        CifsIntegration.openCifsManager(this);
+                        Intent browseIntent = new Intent(this, com.samsung.android.app.networkstoragemanager.activity.BrowseRootFoldersActivity.class);
+                        browseIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(browseIntent);
                         result.putBoolean("result", true);
                         result.putLong("serverId", System.currentTimeMillis());
                     } catch (Exception e) {
-                        Log.e(TAG, "Error launching CIFS manager", e);
+                        Log.e(TAG, "Error launching BrowseRootFoldersActivity", e);
                         result.putBoolean("result", false);
                     }
-                } else if (serverAddr != null && !serverAddr.isEmpty()) {
-                    // Real server configuration - store it
-                    Bundle newServer = new Bundle(extras);
-                    newServer.putLong("serverId", System.currentTimeMillis());
-                    storageLocations.add(newServer);
-                    result.putBoolean("result", true);
-                    result.putLong("serverId", newServer.getLong("serverId"));
-                } else {
-                    // Generic ADD_SERVER request - show SMB/CIFS manager as default
-                    Log.i(TAG, "Generic ADD_SERVER request, routing to SMB/CIFS functionality");
+                } else if ("SMB".equals(type)) {
+                    // SMB button pressed - open SMB/CIFS share manager
+                    Log.i(TAG, "Routing ADD_SERVER to SMB/CIFS share manager (SMB type)");
                     try {
                         CifsIntegration.openCifsManager(this);
                         result.putBoolean("result", true);
                         result.putLong("serverId", System.currentTimeMillis());
                     } catch (Exception e) {
-                        Log.e(TAG, "Error launching CIFS manager for generic ADD_SERVER", e);
+                        Log.e(TAG, "Error launching SMB/CIFS manager", e);
+                        result.putBoolean("result", false);
+                    }
+                } else {
+                    // Generic ADD_SERVER request - default to root filesystem access
+                    Log.i(TAG, "Generic ADD_SERVER request, defaulting to root filesystem access");
+                    try {
+                        Intent rootIntent = new Intent(this, com.samsung.android.app.networkstoragemanager.activity.AddRootLocationActivity.class);
+                        rootIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(rootIntent);
+                        result.putBoolean("result", true);
+                        result.putLong("serverId", System.currentTimeMillis());
+                    } catch (Exception e) {
+                        Log.e(TAG, "Error launching AddRootLocationActivity for generic ADD_SERVER", e);
                         result.putBoolean("result", false);
                     }
                 }
@@ -214,21 +254,26 @@ public class MainService extends Service implements RequestCode {
             case GET_SHARED_FOLDER:
                 //8 (aka root folder) - Route special addresses to appropriate handlers
                 String folderServerAddr = extras.getString("serverAddr");
-                Log.i(TAG, "GET_SHARED_FOLDER request for serverAddr: " + folderServerAddr);
+                long folderId = extras.getLong("serverId", 0);
+                Log.i(TAG, "GET_SHARED_FOLDER request for serverAddr: '" + folderServerAddr + "', serverId: " + folderId);
                 
                 if (folderServerAddr != null) {
                     if (folderServerAddr.equals("ftp://root.local")) {
                         // Route to root file system access
-                        result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(extras.getLong("serverId")));
+                        Log.i(TAG, "Routing to root filesystem for FTP");
+                        result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(folderId));
                     } else if (folderServerAddr.equals("sftp://smb.local")) {
                         // Route to SMB/CIFS share listing
+                        Log.i(TAG, "Routing to SMB/CIFS shares for SFTP");
                         result.putParcelableArrayList("sharedFolderList", CifsIntegration.getCifsShares(this));
                     } else if (folderServerAddr.startsWith("cifs://") || folderServerAddr.startsWith("smb://")) {
                         // Handle actual SMB/CIFS share access
-                        result.putParcelableArrayList("sharedFolderList", handleCifsRequest(extras.getLong("serverId"), folderServerAddr));
+                        Log.i(TAG, "Routing to actual SMB/CIFS share access");
+                        result.putParcelableArrayList("sharedFolderList", handleCifsRequest(folderId, folderServerAddr));
                     } else {
-                        // Default file manager behavior
-                        result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(extras.getLong("serverId")));
+                        // Default file manager behavior - fallback for unknown addresses
+                        Log.w(TAG, "Unknown serverAddr, using default file manager: " + folderServerAddr);
+                        result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(folderId));
                     }
                 } else {
                     // No server address provided, return default
@@ -393,5 +438,39 @@ public class MainService extends Service implements RequestCode {
             return FileManager.getSharedFolderRootDir(serverId);
         }
     }
+
+    /**
+     * Helper method to determine if a server address is a real IP/hostname
+     * rather than one of our default entries.
+     */
+    private boolean isRealServerAddress(String serverAddr) {
+        if (serverAddr == null || serverAddr.trim().isEmpty()) {
+            return false;
+        }
+        
+        // Check for our special default entries
+        if (serverAddr.equals("ftp://root.local") || serverAddr.equals("sftp://smb.local")) {
+            return false;
+        }
+        
+        // Check for IP address pattern (basic check)
+        String ipPattern = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$";
+        if (serverAddr.matches(ipPattern)) {
+            return true;
+        }
+        
+        // Check for hostname pattern (contains at least one dot and no spaces)
+        if (serverAddr.contains(".") && !serverAddr.contains(" ")) {
+            return true;
+        }
+        
+        // Check for common protocols with actual addresses
+        if (serverAddr.startsWith("ftp://") || serverAddr.startsWith("ftps://") || 
+            serverAddr.startsWith("sftp://") || serverAddr.startsWith("smb://")) {
+            String address = serverAddr.substring(serverAddr.indexOf("://") + 3);
+            return address.contains(".") && !address.equals("root.local") && !address.equals("smb.local");
+        }
+        
+        return false;
+    }
 }
-    
