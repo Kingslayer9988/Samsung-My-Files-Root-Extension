@@ -27,7 +27,7 @@
 ### **2. "Add New Share" Dialog Issues**
 
 #### **Problem**: Wrong protocol options displayed
-- **Current**: Shows FTP/SFTP server configuration
+- **Current**: Shows FTP/SFTP server configuration (AND NO LABELS just a "-" for both)
 - **Expected**: Only SMB/CIFS and custom root path options
 
 #### **Required Add Options**:
