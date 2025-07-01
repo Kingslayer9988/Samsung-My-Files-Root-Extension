@@ -133,8 +133,3 @@ private static void addCifsShares(ArrayList<Bundle> defaultList, boolean serverI
     defaultList.add(new Bundle(bStorage));
 }
 }
-    dialogOptions.add(new Bundle(bOption));
-
-    return dialogOptions;
-}
-}
