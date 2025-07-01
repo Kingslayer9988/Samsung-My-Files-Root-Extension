@@ -108,9 +108,9 @@ public class CifsIntegration {
     
     private static List<CifsShare> getDefaultCifsShares() {
         List<CifsShare> defaultShares = new ArrayList<>();
-        // Add some example shares for testing
+        // Add example SMB shares only
         defaultShares.add(new CifsShare("Home Server", "smb://192.168.1.100/shared", "SMB"));
-        defaultShares.add(new CifsShare("FTP Server", "ftp://192.168.1.200", "FTP"));
+        defaultShares.add(new CifsShare("NAS Drive", "smb://192.168.1.200/public", "SMB"));
         return defaultShares;
     }
     

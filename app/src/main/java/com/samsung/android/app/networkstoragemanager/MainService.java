@@ -99,18 +99,27 @@ public class MainService extends Service implements RequestCode {
                 result.putBoolean("result", true);
                 break;
             case ADD_SERVER:
-                //2
-                if (requestInfo.mType.equals("SMB")) {
-                    long newServerId = storageLocations.size() > 0 ? storageLocations.get(storageLocations.size() - 1).getLong("serverId") + 1 : 1; //new id
-
-                    Bundle newLocation = new Bundle(extras);
-                    newLocation.putLong("serverId", newServerId);
-                    storageLocations.add(newLocation);
-
+                //2 - Handle our custom dialog options
+                if (requestInfo.mType.equals("ROOT")) {
+                    // Add Root Location - open system root folder selection
+                    // For now, just indicate success
                     result.putBoolean("result", true);
-                    result.putLong("serverId", newServerId);
+                    result.putLong("serverId", 999); // Dummy ID for root
+                } else if (requestInfo.mType.equals("SMB")) {
+                    // Add SMB/CIFS Location - open CIFS manager
+                    CifsIntegration.openCifsManager(this);
+                    result.putBoolean("result", true);
+                    result.putLong("serverId", 998); // Dummy ID for SMB
                 } else {
-                    result.putBoolean("result", false); //only allow smb
+                    // Legacy: handle old SMB/FTP/SFTP for compatibility
+                    if (requestInfo.mType.equals("FTP") || requestInfo.mType.equals("SFTP")) {
+                        // Redirect old FTP/SFTP to SMB configuration
+                        CifsIntegration.openCifsManager(this);
+                        result.putBoolean("result", true);
+                        result.putLong("serverId", 997); // Dummy ID
+                    } else {
+                        result.putBoolean("result", false); // Unknown type
+                    }
                 }
                 break;
             case UPDATE_SERVER:
@@ -136,16 +145,36 @@ public class MainService extends Service implements RequestCode {
                 }
                 break;
             case FIND_SERVER:
-                //7 (when opening smb scan dialog)
-                result.putParcelableArrayList("serverList", LocationList.getDefaultList(false));
+                //7 (when opening + dialog) - Show only 2 options
+                ArrayList<Bundle> dialogOptions = new ArrayList<>();
+                Bundle bOption = new Bundle();
+                bOption.putBoolean("isAnonymousMode", true);
+                bOption.putInt("serverPort", 1);
+
+                // Option 1: Add Root Location
+                bOption.putLong("serverId", 1);
+                bOption.putString("serverAddr", "root://add");
+                bOption.putString("serverName", "Add Root Location");
+                bOption.putString("sharedFolder", "");
+                bOption.putString("connectionType", "ROOT");
+                dialogOptions.add(new Bundle(bOption));
+
+                // Option 2: Add SMB/CIFS Location  
+                bOption.putLong("serverId", 2);
+                bOption.putString("serverAddr", "smb://add");
+                bOption.putString("serverName", "Add SMB/CIFS Location");
+                bOption.putString("sharedFolder", "");
+                bOption.putString("connectionType", "SMB");
+                dialogOptions.add(new Bundle(bOption));
+
+                result.putParcelableArrayList("serverList", dialogOptions);
                 result.putBoolean("result", true);
                 break;
             case GET_SHARED_FOLDER:
                 //8 (aka root folder)
                 if (extras.getString("serverAddr") != null && 
                     (extras.getString("serverAddr").startsWith("cifs://") || 
-                     extras.getString("serverAddr").startsWith("smb://") || 
-                     extras.getString("serverAddr").startsWith("ftp://"))) {
+                     extras.getString("serverAddr").startsWith("smb://"))) {
                     result.putParcelableArrayList("sharedFolderList", handleCifsRequest(extras.getLong("serverId"), extras.getString("serverAddr")));
                 } else {
                     result.putParcelableArrayList("sharedFolderList", FileManager.getSharedFolderRootDir(extras.getLong("serverId")));
@@ -290,21 +319,20 @@ public class MainService extends Service implements RequestCode {
         }
     }
 
-    // This method handles CIFS requests and integrates with the CifsIntegration class.
+    // This method handles SMB/CIFS requests and integrates with the CifsIntegration class.
     private ArrayList<Bundle> handleCifsRequest(long serverId, String serverAddr) {
         if (serverAddr.startsWith("cifs://")) {
             if (serverAddr.equals("cifs://add_new")) {
-                // Open CIFS configuration
+                // Open SMB configuration
                 CifsIntegration.openCifsManager(this);
                 return new ArrayList<>();
             } else {
                 // Handle CIFS share access
                 return CifsIntegration.accessCifsShare(this, serverId, serverAddr);
             }
-        } else if (serverAddr.startsWith("smb://") || serverAddr.startsWith("ftp://") || serverAddr.startsWith("sftp://")) {
-            // Handle other network protocols - you'll need to implement this
-            // For now, return empty list or delegate to appropriate handler
-            return new ArrayList<>();
+        } else if (serverAddr.startsWith("smb://")) {
+            // Handle SMB protocol directly
+            return CifsIntegration.accessCifsShare(this, serverId, serverAddr);
         } else {
             // Fallback to default file manager behavior
             return FileManager.getSharedFolderRootDir(serverId);

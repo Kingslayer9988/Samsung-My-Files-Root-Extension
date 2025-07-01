@@ -72,49 +72,12 @@ public class LocationList {
     bStorage.putBoolean("isAnonymousMode", true);
     bStorage.putInt("serverPort", 1);
 
-    // === Root Explorer Category ===
+    // === Root Explorer (Simplified) ===
     if (serverIds) bStorage.putLong("serverId", 1);
     bStorage.putString("serverAddr", "#\\");
-    bStorage.putString("serverName", "📁 Root Explorer");
+    bStorage.putString("serverName", "📁 Root");
     bStorage.putString("sharedFolder", "");
     bStorage.putString("category", "root_explorer");
-    bStorage.putBoolean("isCategory", true);
-    defaultList.add(new Bundle(bStorage));
-
-    // Root Explorer - Root
-    if (serverIds) bStorage.putLong("serverId", 2);
-    bStorage.putString("serverAddr", "#\\");
-    bStorage.putString("serverName", "  📁 Root (/)");
-    bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "root_explorer");
-    bStorage.putString("parentId", "1");
-    defaultList.add(new Bundle(bStorage));
-
-    // Root Explorer - System
-    if (serverIds) bStorage.putLong("serverId", 3);
-    bStorage.putString("serverAddr", "#\\system");
-    bStorage.putString("serverName", "  📁 System (/system)");
-    bStorage.putString("sharedFolder", "system");
-    bStorage.putString("category", "root_explorer");
-    bStorage.putString("parentId", "1");
-    defaultList.add(new Bundle(bStorage));
-
-    // Root Explorer - Data
-    if (serverIds) bStorage.putLong("serverId", 4);
-    bStorage.putString("serverAddr", "#\\data");
-    bStorage.putString("serverName", "  📁 Data (/data)");
-    bStorage.putString("sharedFolder", "data");
-    bStorage.putString("category", "root_explorer");
-    bStorage.putString("parentId", "1");
-    defaultList.add(new Bundle(bStorage));
-
-    // Root Explorer - Internal Storage
-    if (serverIds) bStorage.putLong("serverId", 5);
-    bStorage.putString("serverAddr", "#\\sdcard");
-    bStorage.putString("serverName", "  📁 Internal Storage (/sdcard)");
-    bStorage.putString("sharedFolder", "sdcard");
-    bStorage.putString("category", "root_explorer");
-    bStorage.putString("parentId", "1");
     defaultList.add(new Bundle(bStorage));
 
     // SD Card (if available)
@@ -122,62 +85,56 @@ public class LocationList {
     if (sdcard != null) {
         if (serverIds) bStorage.putLong("serverId", 6);
         bStorage.putString("serverAddr", "#\\storage\\" + sdcard);
-        bStorage.putString("serverName", "  📁 SD Card");
+        bStorage.putString("serverName", "📁 SD Card");
         bStorage.putString("sharedFolder", "storage/" + sdcard);
         bStorage.putString("category", "root_explorer");
-        bStorage.putString("parentId", "1");
         defaultList.add(new Bundle(bStorage));
     }
 
-    // === CIFS Shares Category ===
+    // === Network Storage Category ===
     if (serverIds) bStorage.putLong("serverId", 100);
     bStorage.putString("serverAddr", "cifs://");
-    bStorage.putString("serverName", "🌐 CIFS Shares");
+    bStorage.putString("serverName", "🌐 Network Storage");
     bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "cifs_shares");
+    bStorage.putString("category", "network_storage");
     bStorage.putBoolean("isCategory", true);
     defaultList.add(new Bundle(bStorage));
 
-    // Add CIFS shares from CIFS Documents Provider
+    // Add SMB shares from integrated CIFS provider
     addCifsShares(defaultList, serverIds);
-
-    // Add "Add New Share" option
-    if (serverIds) bStorage.putLong("serverId", 999);
-    bStorage.putString("serverAddr", "cifs://add_new");
-    bStorage.putString("serverName", "  ➕ Add New Share");
-    bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "cifs_shares");
-    bStorage.putString("parentId", "100");
-    bStorage.putBoolean("isAddNew", true);
-    defaultList.add(new Bundle(bStorage));
 
     return defaultList;
 }
 
 private static void addCifsShares(ArrayList<Bundle> defaultList, boolean serverIds) {
-    // Add example CIFS shares for now (will be replaced with real provider integration)
+    // Add example SMB shares only (FTP/SFTP removed)
     Bundle bStorage = new Bundle();
     bStorage.putBoolean("isAnonymousMode", true);
-    bStorage.putInt("serverPort", 1);
+    bStorage.putInt("serverPort", 445);
     
-    // Example SMB Share
+    // Example SMB Share 1
     if (serverIds) bStorage.putLong("serverId", 101);
     bStorage.putString("serverAddr", "smb://192.168.1.100/shared");
-    bStorage.putString("serverName", "  📁 Home Server (SMB)");
+    bStorage.putString("serverName", "  🌐 Home Server (SMB)");
     bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "cifs_shares");
+    bStorage.putString("category", "network_storage");
     bStorage.putString("connectionType", "SMB");
     bStorage.putString("parentId", "100");
     defaultList.add(new Bundle(bStorage));
     
-    // Example FTP Share
+    // Example SMB Share 2
     if (serverIds) bStorage.putLong("serverId", 102);
-    bStorage.putString("serverAddr", "ftp://192.168.1.200");
-    bStorage.putString("serverName", "  📁 FTP Server");
+    bStorage.putString("serverAddr", "smb://192.168.1.200/public");
+    bStorage.putString("serverName", "  🌐 NAS Drive (SMB)");
     bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "cifs_shares");
-    bStorage.putString("connectionType", "FTP");
+    bStorage.putString("category", "network_storage");
+    bStorage.putString("connectionType", "SMB");
     bStorage.putString("parentId", "100");
     defaultList.add(new Bundle(bStorage));
+}
+}
+    dialogOptions.add(new Bundle(bOption));
+
+    return dialogOptions;
 }
 }
