@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Modern Activity Titles -->
+    <string name="add_root_location_title">Add Root Location</string>
+    <string name="add_smb_share_title">Add SMB Share</string>
+    <string name="browse_root_folders_title">Storage Locations</string>
+    
+    <!-- Buttons -->
+    <string name="btn_browse_root">Browse Root Folders</string>
+    <string name="btn_add_root">Add Root Storage</string>
+    <string name="btn_test_connection">Test Connection</string>
+    <string name="btn_add_share">Add Share</string>
+    
+    <!-- Form Fields -->
+    <string name="hint_storage_name">Storage Name</string>
+    <string name="hint_description">Description (Optional)</string>
+    <string name="hint_host">Host / IP Address</string>
+    <string name="hint_port">Port (default: 445)</string>
+    <string name="hint_share_name">Share Name</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_workgroup">Workgroup (Optional)</string>
+    
+    <!-- Messages -->
+    <string name="msg_no_path_selected">No path selected</string>
+    <string name="msg_connection_successful">Connection successful!</string>
+    <string name="msg_storage_added">Storage added successfully</string>
+    <string name="msg_storage_removed">Storage removed successfully</string>
+    <string name="msg_test_connection_first">Test the connection first to ensure your credentials and settings are correct before adding the share.</string>
+    <string name="msg_root_access_warning">Root access required. This feature requires device to be rooted and may void warranty.</string>
+    
+    <!-- Errors -->
+    <string name="error_select_path_and_name">Please select a path and enter a storage name</string>
+    <string name="error_enter_display_name">Please enter a display name</string>
+    <string name="error_enter_host">Please enter a host address</string>
+    <string name="error_enter_share_name">Please enter a share name</string>
+    <string name="error_enter_username">Please enter a username</string>
+    <string name="error_enter_password">Please enter a password</string>
+    <string name="error_invalid_port">Invalid port number</string>
+    <string name="error_cannot_open_directory_picker">Cannot open directory picker</string>
+    
+    <!-- Dialog -->
+    <string name="dialog_add_storage_title">Add Storage</string>
+    <string name="dialog_remove_storage_title">Remove Storage</string>
+    <string name="dialog_remove_storage_message">Are you sure you want to remove \'%1$s\'?</string>
+    <string name="dialog_remove">Remove</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_edit">Edit</string>
+    <string name="dialog_test_connection">Test Connection</string>
+    
+    <!-- Empty State -->
+    <string name="empty_no_storage_locations">No Storage Locations</string>
+    <string name="empty_add_storage_to_start">Add root folders or SMB shares to get started</string>
+    
+    <!-- Storage Types -->
+    <string name="storage_type_root">Root Storage</string>
+    <string name="storage_type_smb">SMB/CIFS Share</string>
+</resources>

@@ -67,44 +67,39 @@ public class LocationList {
     }
 
     public static ArrayList<Bundle> getDefaultList(boolean serverIds) {
-    ArrayList<Bundle> defaultList = new ArrayList<>();
-    Bundle bStorage = new Bundle();
-    bStorage.putBoolean("isAnonymousMode", true);
-    bStorage.putInt("serverPort", 1);
+        ArrayList<Bundle> defaultList = new ArrayList<>();
+        Bundle bStorage;
 
-    // === Root Explorer (Simplified) ===
-    if (serverIds) bStorage.putLong("serverId", 1);
-    bStorage.putString("serverAddr", "#\\");
-    bStorage.putString("serverName", "📁 Root");
-    bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "root_explorer");
-    defaultList.add(new Bundle(bStorage));
-
-    // SD Card (if available)
-    String sdcard = FileManager.getSDCardPath();
-    if (sdcard != null) {
-        if (serverIds) bStorage.putLong("serverId", 6);
-        bStorage.putString("serverAddr", "#\\storage\\" + sdcard);
-        bStorage.putString("serverName", "📁 SD Card");
-        bStorage.putString("sharedFolder", "storage/" + sdcard);
-        bStorage.putString("category", "root_explorer");
+        // Present FTP/SFTP options that Samsung My Files understands, but redirect to SMB/CIFS backend
+        
+        // 1. "Add Root Location" - disguised as FTP server
+        bStorage = new Bundle();
+        bStorage.putBoolean("isAnonymousMode", true);
+        bStorage.putInt("serverPort", 21);
+        if (serverIds) bStorage.putLong("serverId", 1);
+        bStorage.putString("serverAddr", "ftp://root.local");
+        bStorage.putString("serverName", "🔓 Add Root Location");
+        bStorage.putString("sharedFolder", "");
+        bStorage.putString("connectionType", "FTP");
+        bStorage.putString("serverType", "ROOT_ACCESS");
+        bStorage.putString("protocol", "FTP");
         defaultList.add(new Bundle(bStorage));
+
+        // 2. "Add SMB/CIFS Share" - disguised as SFTP server  
+        bStorage = new Bundle();
+        bStorage.putBoolean("isAnonymousMode", true);
+        bStorage.putInt("serverPort", 22);
+        if (serverIds) bStorage.putLong("serverId", 2);
+        bStorage.putString("serverAddr", "sftp://smb.local");
+        bStorage.putString("serverName", "🌐 Add SMB/CIFS Share");
+        bStorage.putString("sharedFolder", "");
+        bStorage.putString("connectionType", "SFTP");
+        bStorage.putString("serverType", "SMB_ACCESS");
+        bStorage.putString("protocol", "SFTP");
+        defaultList.add(new Bundle(bStorage));
+
+        return defaultList;
     }
-
-    // === Network Storage Category ===
-    if (serverIds) bStorage.putLong("serverId", 100);
-    bStorage.putString("serverAddr", "cifs://");
-    bStorage.putString("serverName", "🌐 Network Storage");
-    bStorage.putString("sharedFolder", "");
-    bStorage.putString("category", "network_storage");
-    bStorage.putBoolean("isCategory", true);
-    defaultList.add(new Bundle(bStorage));
-
-    // Add SMB shares from integrated CIFS provider
-    addCifsShares(defaultList, serverIds);
-
-    return defaultList;
-}
 
 private static void addCifsShares(ArrayList<Bundle> defaultList, boolean serverIds) {
     // Add example SMB shares only (FTP/SFTP removed)

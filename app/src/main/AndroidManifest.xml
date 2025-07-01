@@ -15,6 +15,65 @@
             </intent-filter>
         </service>
 
+        <!-- Test Launcher Activity for development -->
+        <activity
+            android:name="com.samsung.android.app.networkstoragemanager.activity.TestLauncherActivity"
+            android:exported="true"
+            android:label="Modern Storage Manager Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- FTP Activity - Now used for "Add Root Location" -->
+        <activity
+            android:name="com.samsung.android.app.networkstoragemanager.activity.AddRootLocationActivity"
+            android:exported="true"
+            android:label="Add Root Location">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="ftp" />
+            </intent-filter>
+        </activity>
+
+        <!-- SFTP Activity - Now used for "Add SMB/CIFS Share" -->
+        <activity
+            android:name="com.samsung.android.app.networkstoragemanager.activity.AddSmbShareActivity"
+            android:exported="true"
+            android:label="Add SMB/CIFS Share">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sftp" />
+            </intent-filter>
+        </activity>
+
+        <!-- SMB Activity - Now used for "Browse Root Folders" -->
+        <activity
+            android:name="com.samsung.android.app.networkstoragemanager.activity.BrowseRootFoldersActivity"
+            android:exported="true"
+            android:label="Browse Root Folders">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="smb" />
+            </intent-filter>
+        </activity>
+
+        <!-- Custom DocumentProvider to bypass Samsung My Files protocol detection -->
+        <provider
+            android:name="com.samsung.android.app.networkstoragemanager.provider.CustomStorageProvider"
+            android:authorities="com.samsung.android.app.networkstoragemanager.documents"
+            android:exported="true"
+            android:grantUriPermissions="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
     </application>
 
 </manifest>

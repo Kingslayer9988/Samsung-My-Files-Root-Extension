@@ -58,8 +58,6 @@
     <string name="edit_passphrase_hint">Not entered if not set</string>
     <string name="edit_ignore_known_hosts_label">Do not check SSH trusted hosts</string>
     <string name="edit_encoding_title">Character Code</string>
-    <string name="edit_ftp_mode_title">Active Mode</string>
-    <string name="edit_ftps_implicit_label">Implicit SSL/TLS Mode</string>
     <string name="edit_folder_title">Folder</string>
     <string name="edit_folder_hint">\&quot;/\&quot; if empty</string>
     <string name="edit_option_section_title">Option</string>

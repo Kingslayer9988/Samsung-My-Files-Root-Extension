@@ -58,8 +58,6 @@
     <string name="edit_passphrase_hint">Не вводите если не нужно</string>
     <string name="edit_ignore_known_hosts_label">Не проверять знакомые и доверенные SSH хосты</string>
     <string name="edit_encoding_title">Кодировка символов</string>
-    <string name="edit_ftp_mode_title">Активный режим</string>
-    <string name="edit_ftps_implicit_label">Неявный SSL/TLS режим</string>
     <string name="edit_folder_title">Папка</string>
     <string name="edit_folder_hint">\&quot;/\&quot; если пусто</string>
     <string name="edit_option_section_title">Опции</string>

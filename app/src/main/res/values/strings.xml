@@ -5,11 +5,11 @@
     <string name="add_network_storage">Add root storage location</string>
     <string name="header_add_network_storage">Add root storage location</string>
 
-    <string name="ftp_server">-</string>
-    <string name="sftp_server">-</string>
-    <string name="smb_server">Root storage location</string>
+    <string name="ftp_server">Add Root Location</string>
+    <string name="sftp_server">Add SMB/CIFS Share</string>
+    <string name="smb_server">Browse Root Folders</string>
     <string name="smb_manual_input">New</string>
-    <string name="add_network_storage_sub_text">Tap the button above to add a new root storage locations.</string>
+    <string name="add_network_storage_sub_text">Tap the button above to add a new root storage location.</string>
 
     <string name="add_network_drive">New root storage location</string>
     <string name="address">[description]/[path]</string>
